@@ -1,0 +1,30 @@
+{
+    "name": "hechoenlaravel/jarvis-foundation",
+    "description": "Some foundation code for the Jarvis Platform",
+    "license": "MIT",    
+    "authors": [
+        {
+            "name": "Jose Luis Fonseca",
+            "email": "jose@ditecnologia.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.2.0",
+        "orchestra/testbench": "~3.1",
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hechoenlaravel\\JarvisFoundation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Hechoenlaravel\\JarvisFoundation\\Tests\\": "tests/"
+      }
+    },
+    "minimum-stability": "dev"
+}
