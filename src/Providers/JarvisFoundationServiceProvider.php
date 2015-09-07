@@ -6,6 +6,12 @@ use Illuminate\Support\ServiceProvider;
 
 class JarvisFoundationServiceProvider extends ServiceProvider{
 
+    protected $providers = [
+        \Joselfonseca\LaravelAdmin\Providers\LaravelAdminServiceProvider::class,
+        \Pingpong\Modules\ModulesServiceProvider::class,
+        \Prettus\Repository\Providers\RepositoryServiceProvider::class,
+    ];
+
     /**
      * Perform post-registration booting of services.
      *
@@ -23,6 +29,18 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
      */
     public function register()
     {
-        // TODO: Implement register() method.
+        $this->registerOtherProviders();
+    }
+
+    /**
+     * Register other Service Providers
+     * @return $this
+     */
+    private function registerOtherProviders()
+    {
+        foreach ($this->providers as $provider) {
+            $this->app->register($provider);
+        }
+        return $this;
     }
 }
