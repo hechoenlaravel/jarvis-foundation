@@ -8,6 +8,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
 
     protected $providers = [
         \Joselfonseca\LaravelAdmin\Providers\LaravelAdminServiceProvider::class,
+        \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Pingpong\Modules\ModulesServiceProvider::class,
         \Prettus\Repository\Providers\RepositoryServiceProvider::class,
     ];
