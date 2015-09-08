@@ -58,4 +58,25 @@ class TestEntityGenerator extends TestCase
         $this->assertEquals('entity name', $entity->name);
     }
 
+    public function test_it_creates_the_table_in_the_db()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler\EntityGeneratorHandler');
+
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand', [
+            'namespace' => 'jarvis',
+            'name' => 'entity name',
+            'description' => 'Entity Description',
+            'slug' => 'entity_name',
+            'locked' => 1
+        ], [
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator'
+        ]);
+
+        $this->assertTrue(\Schema::hasTable('jarvis_entity_name'));
+    }
+
 }
