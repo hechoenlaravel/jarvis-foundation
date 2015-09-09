@@ -14,6 +14,7 @@ class EntityModel extends Model{
         'slug',
         'description',
         'prefix',
+        'table_name',
         'locked'
     ];
 

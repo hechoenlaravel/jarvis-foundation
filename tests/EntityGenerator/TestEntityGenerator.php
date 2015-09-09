@@ -29,7 +29,8 @@ class TestEntityGenerator extends TestCase
         $bus->addHandler('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand',
             'Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler\EntityGeneratorHandler');
         $bus->dispatch('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand', [], [
-            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator'
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
         ]);
     }
 
@@ -51,7 +52,8 @@ class TestEntityGenerator extends TestCase
             'slug' => 'entity_name',
             'locked' => 1
         ], [
-            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator'
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
         ]);
 
         $this->assertInstanceOf('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel', $entity);
@@ -73,7 +75,8 @@ class TestEntityGenerator extends TestCase
             'slug' => 'entity_name',
             'locked' => 1
         ], [
-            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator'
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
         ]);
 
         $this->assertTrue(\Schema::hasTable('jarvis_entity_name'));

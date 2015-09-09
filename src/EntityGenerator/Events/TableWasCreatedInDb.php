@@ -5,11 +5,7 @@ namespace Hechoenlaravel\JarvisFoundation\EntityGenerator\Events;
 use Hechoenlaravel\JarvisFoundation\Events\Event;
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 
-/**
- * Class EntityWasCreated
- * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Events
- */
-class EntityWasCreated extends Event{
+class TableWasCreatedInDb extends Event{
 
     /**
      * Entity generated
