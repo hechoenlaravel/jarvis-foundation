@@ -24,8 +24,10 @@ class SetPrefixAndTableName implements Middleware{
         return $next($command);
     }
 
+
     /**
-     * @param EntityModel $entity
+     * Set the entity prefix
+     * @param $command
      * @return mixed
      */
     protected function setPrefix($command)
@@ -36,9 +38,10 @@ class SetPrefixAndTableName implements Middleware{
         return $command->prefix;
     }
 
+
     /**
-     * @param $prefix
-     * @param EntityModel $entity
+     * set the entity table name
+     * @param $command
      * @return string
      */
     protected function getTableName($command)
