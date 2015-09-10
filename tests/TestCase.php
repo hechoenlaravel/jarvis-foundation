@@ -47,6 +47,26 @@ class TestCase extends Orchestra{
         ]);
     }
 
+    protected function getAnEntity()
+    {
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler\EntityGeneratorHandler');
+
+        $return = $bus->dispatch('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand', [
+            'namespace' => 'jarvis',
+            'name' => 'entity name',
+            'description' => 'Entity Description',
+            'slug' => 'entity_name',
+            'locked' => 1
+        ], [
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
+        ]);
+        return $return;
+    }
+
     /**
      * it Just assert true so phpunit don't cry
      * with this class not having any tests
