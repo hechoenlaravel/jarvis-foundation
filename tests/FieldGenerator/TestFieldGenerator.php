@@ -17,7 +17,8 @@ class TestFieldGenerator extends TestCase
     public function test_it_gets_the_field_generator_command()
     {
         $FieldCreatorCommand = app('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand');
-        $this->assertInstanceOf('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', $FieldCreatorCommand);
+        $this->assertInstanceOf('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
+            $FieldCreatorCommand);
     }
 
     public function test_it_validates_field_type_is_valid()
@@ -26,7 +27,7 @@ class TestFieldGenerator extends TestCase
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
         $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
-        try{
+        try {
             $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
                 'entity_id' => $this->getAnEntity()->id,
                 'namespace' => 'jarvis',
@@ -40,8 +41,7 @@ class TestFieldGenerator extends TestCase
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator'
             ]);
             $this->assertTrue(true);
-        }catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             $this->assertTrue(false);
         }
     }
