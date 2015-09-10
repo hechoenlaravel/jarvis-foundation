@@ -45,6 +45,12 @@ class EntityGeneratorCommand
      */
     public $locked;
 
+    /**
+     * Shoud the command create the DB table?
+     * @boolean
+     */
+    public $create_table;
+
 
     /**
      * @param string $namespace
@@ -54,7 +60,7 @@ class EntityGeneratorCommand
      * @param string $prefix
      * @param bool $locked
      */
-    public function __construct($namespace = "", $name = "", $description = "", $slug = "", $prefix = "", $locked = true)
+    public function __construct($namespace = "", $name = "", $description = "", $slug = "", $prefix = "", $locked = true, $create_table = true)
     {
         $this->namespace = $namespace;
         $this->name = $name;
@@ -62,6 +68,7 @@ class EntityGeneratorCommand
         $this->slug = $slug;
         $this->prefix = $prefix;
         $this->locked = $locked;
+        $this->create_table = $create_table;
     }
 
 }

@@ -15,7 +15,8 @@ class EntityModel extends Model{
         'description',
         'prefix',
         'table_name',
-        'locked'
+        'locked',
+        'create_table'
     ];
 
 }
