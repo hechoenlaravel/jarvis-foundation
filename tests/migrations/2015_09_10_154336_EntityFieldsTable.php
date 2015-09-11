@@ -35,6 +35,6 @@ class EntityFieldsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('app_entities_fields');
     }
 }
