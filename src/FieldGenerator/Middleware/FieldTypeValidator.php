@@ -15,6 +15,7 @@ class FieldTypeValidator implements Middleware{
      */
     public function execute($command, callable $next)
     {
+
         return $next($command);
     }
 }
