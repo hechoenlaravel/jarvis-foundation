@@ -42,16 +42,6 @@ class TestServiceProvider extends TestCase
     }
 
     /**
-     * Since the service provider is being loaded check if
-     * the repositories service provider was also loaded
-     */
-    public function test_it_loads_repositories_service_provider()
-    {
-        $this->assertInstanceOf('Prettus\Repository\Providers\RepositoryServiceProvider',
-            app()->getProvider('Prettus\Repository\Providers\RepositoryServiceProvider'));
-    }
-
-    /**
      * Since the service provider is being loaded check if the
      * laravel tactician service provider was also loaded
      */
