@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'Hechoenlaravel\JarvisFoundation\EntityGenerator\Events\EntityWasCreated' => [
             'Hechoenlaravel\JarvisFoundation\EntityGenerator\Listeners\CreateTableInDatabase'
+        ],
+        'Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasCreated' => [
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\CreateColumnInDatabase'
         ]
     ];
 

@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class JarvisFoundationServiceProvider extends ServiceProvider{
 
     protected $providers = [
+        \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
         \Joselfonseca\LaravelAdmin\Providers\LaravelAdminServiceProvider::class,
         \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,

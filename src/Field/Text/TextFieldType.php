@@ -19,7 +19,7 @@ class TextFieldType implements FieldTypeInterface
     /**
      * @var string
      */
-    protected $column_type = "string";
+    protected $columnType = "string";
 
     /**
      * get the column type for this field type
@@ -27,7 +27,7 @@ class TextFieldType implements FieldTypeInterface
      */
     public function getColumnType()
     {
-        return $this->column_type;
+        return $this->columnType;
     }
 
     /**

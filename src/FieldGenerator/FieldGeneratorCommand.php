@@ -78,6 +78,7 @@ class FieldGeneratorCommand
         $create_field = true,
         $type = ""
     ) {
+        $this->entity_id = $entity_id;
         $this->namespace = $namespace;
         $this->name = $name;
         $this->description = $description;

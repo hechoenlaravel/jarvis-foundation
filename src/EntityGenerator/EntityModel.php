@@ -4,10 +4,20 @@ namespace Hechoenlaravel\JarvisFoundation\EntityGenerator;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class EntityModel
+ * @package Hechoenlaravel\JarvisFoundation\EntityGenerator
+ */
 class EntityModel extends Model{
 
+    /**
+     * @var string
+     */
     protected $table = "app_entities";
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'namespace',
         'name',
@@ -18,5 +28,14 @@ class EntityModel extends Model{
         'locked',
         'create_table'
     ];
+
+    /**
+     * Get the Table name for the Entity
+     * @return string
+     */
+    public function getTableName()
+    {
+        return $this->prefix.'_'.$this->slug;
+    }
 
 }
