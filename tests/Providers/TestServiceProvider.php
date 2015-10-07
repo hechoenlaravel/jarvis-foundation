@@ -22,26 +22,6 @@ class TestServiceProvider extends TestCase
     }
 
     /**
-     * Since the service provider is being loaded check if
-     * the laravel Admin service provider was also loaded
-     */
-    public function test_it_loads_laravel_admin_service_provider()
-    {
-        $this->assertInstanceOf('Joselfonseca\LaravelAdmin\Providers\LaravelAdminServiceProvider',
-            app()->getProvider('Joselfonseca\LaravelAdmin\Providers\LaravelAdminServiceProvider'));
-    }
-
-    /**
-     * Since the service provider is being loaded check if
-     * the pingpong modules service provided was also loaded
-     */
-    public function test_it_loads_pingpong_service_provider()
-    {
-        $this->assertInstanceOf('Pingpong\Modules\ModulesServiceProvider',
-            app()->getProvider('Pingpong\Modules\ModulesServiceProvider'));
-    }
-
-    /**
      * Since the service provider is being loaded check if the
      * laravel tactician service provider was also loaded
      */
