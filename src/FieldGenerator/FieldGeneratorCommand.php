@@ -57,6 +57,23 @@ class FieldGeneratorCommand
      */
     public $type;
 
+    /**
+     * is the field required?
+     * @var
+     */
+    public $required;
+
+    /**
+     * The field options
+     * @var
+     */
+    public $options;
+
+    /**
+     * The field default value
+     * @var
+     */
+    public $default;
 
     /**
      * @param string $entity_id
@@ -76,7 +93,10 @@ class FieldGeneratorCommand
         $slug = "",
         $locked = true,
         $create_field = true,
-        $type = ""
+        $type = "",
+        $required = false,
+        $options = [],
+        $default = null
     ) {
         $this->entity_id = $entity_id;
         $this->namespace = $namespace;
@@ -86,6 +106,9 @@ class FieldGeneratorCommand
         $this->locked = $locked;
         $this->create_field = $create_field;
         $this->type = $type;
+        $this->required = $required;
+        $this->options = $options;
+        $this->default = $default;
     }
 
 }

@@ -40,6 +40,7 @@ class TestFieldGenerator extends TestCase
             ], [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             ]);
             $this->assertTrue(true);
         } catch (FieldTypeNotRegistered $e) {
@@ -66,7 +67,8 @@ class TestFieldGenerator extends TestCase
             'type' => 'someFieldType'
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator'
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
     }
 
@@ -85,7 +87,8 @@ class TestFieldGenerator extends TestCase
             'type' => 'text'
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator'
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
     }
 
@@ -107,6 +110,7 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
     }
@@ -129,6 +133,7 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertTrue(\Schema::hasColumn($entity->getTableName(), 'first_name'));
@@ -152,9 +157,36 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertFalse(\Schema::hasColumn($entity->getTableName(), 'first_name'));
+    }
+
+    public function test_serializes_the_options_property()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $entity = $this->getAnEntity();
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+            'entity_id' => $entity->id,
+            'name' => 'first name',
+            'description' => 'field Description',
+            'slug' => 'first_name',
+            'locked' => 1,
+            'create_field' => 0,
+            'type' => 'text',
+            'options' => [
+                'foo' => 'bar'
+            ]
+        ], [
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
+        ]);
+        $this->assertEquals(serialize(['foo' => 'bar']), $field->options);
     }
 
 }

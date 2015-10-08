@@ -18,7 +18,8 @@ class FieldModel extends Model{
         'default',
         'required',
         'locked',
-        'create_field'
+        'create_field',
+        'options'
     ];
 
     public function entity()
