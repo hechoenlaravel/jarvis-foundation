@@ -76,6 +76,12 @@ class FieldGeneratorCommand
     public $default;
 
     /**
+     * is a hidden field?
+     * @var
+     */
+    public $hidden;
+
+    /**
      * @param string $entity_id
      * @param string $namespace
      * @param string $name
@@ -96,7 +102,8 @@ class FieldGeneratorCommand
         $type = "",
         $required = false,
         $options = [],
-        $default = null
+        $default = null,
+        $hidden = 0
     ) {
         $this->entity_id = $entity_id;
         $this->namespace = $namespace;
@@ -109,6 +116,7 @@ class FieldGeneratorCommand
         $this->required = $required;
         $this->options = $options;
         $this->default = $default;
+        $this->hidden = $hidden;
     }
 
 }
