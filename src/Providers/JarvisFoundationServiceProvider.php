@@ -6,10 +6,15 @@ use Illuminate\Support\ServiceProvider;
 
 class JarvisFoundationServiceProvider extends ServiceProvider{
 
+    /**
+     * Service providers to load
+     * @var array
+     */
     protected $providers = [
         \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
-        \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class
+        \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
+        \Styde\Html\HtmlServiceProvider::class,
     ];
 
     /**
@@ -19,7 +24,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
      */
     public function boot()
     {
-        // TODO: Implement register() method.
+        $this->loadRoutes();
     }
 
     /**
@@ -30,6 +35,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
     public function register()
     {
         $this->registerOtherProviders();
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'jarvisPlatform');
     }
 
     /**
@@ -41,6 +47,15 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
         foreach ($this->providers as $provider) {
             $this->app->register($provider);
         }
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function loadRoutes()
+    {
+        require_once __DIR__.'/../Http/routes.php';
         return $this;
     }
 }
