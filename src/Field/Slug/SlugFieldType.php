@@ -22,6 +22,12 @@ class SlugFieldType implements FieldTypeInterface
     protected $columnType = "string";
 
     /**
+     * The field type name
+     * @var string
+     */
+    public $name = "Slug";
+
+    /**
      * get the column type for this field type
      * @return string
      */

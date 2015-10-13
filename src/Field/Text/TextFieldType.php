@@ -22,6 +22,12 @@ class TextFieldType implements FieldTypeInterface
     protected $columnType = "string";
 
     /**
+     * The field type name
+     * @var string
+     */
+    public $name = "Texto";
+
+    /**
      * get the column type for this field type
      * @return string
      */

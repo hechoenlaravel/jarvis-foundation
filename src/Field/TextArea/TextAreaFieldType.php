@@ -22,6 +22,12 @@ class TextAreaFieldType implements FieldTypeInterface
     protected $columnType = "text";
 
     /**
+     * The field type name
+     * @var string
+     */
+    public $name = "Area de Texto";
+
+    /**
      * get the column type for this field type
      * @return string
      */

@@ -15,6 +15,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
         \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
         \Styde\Html\HtmlServiceProvider::class,
+        \Joselfonseca\LaravelApiTools\LaravelApiToolsServiceProvider::class,
     ];
 
     /**
@@ -25,6 +26,9 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
     public function boot()
     {
         $this->loadRoutes();
+        $this->publishes([
+            __DIR__.'/../../resources/assets' => public_path('vendor/jplatform'),
+        ], 'public');
     }
 
     /**

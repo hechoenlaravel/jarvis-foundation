@@ -22,6 +22,12 @@ class EmailFieldType implements FieldTypeInterface
     protected $columnType = "string";
 
     /**
+     * The field type name
+     * @var string
+     */
+    public $name = "Email";
+
+    /**
      * get the column type for this field type
      * @return string
      */

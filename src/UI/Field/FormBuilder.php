@@ -4,6 +4,7 @@ namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
 
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
+use Hechoenlaravel\JarvisFoundation\Field\FieldTypes;
 
 /**
  * Class FormBuilder
@@ -24,12 +25,19 @@ class FormBuilder {
     protected $url;
 
     /**
+     * Field Types
+     * @var FieldTypes
+     */
+    protected $types;
+
+    /**
      * Create a new Object
      * @param EntityModel $entity
      */
     public function __construct(EntityModel $entity)
     {
         $this->entity = $entity;
+        $this->types = app('field.types');
     }
 
     /**
@@ -50,8 +58,20 @@ class FormBuilder {
         $view = view('jarvisPlatform::field.admin.fieldform')
             ->with('entity', $this->entity)
             ->with('returnUrl', $this->url)
+            ->with('types', $this->getFieldTypes())
             ->render();
         return $view;
+    }
+
+    public function getFieldTypes()
+    {
+        $types = [];
+        foreach($this->types->types as $type => $class)
+        {
+            $c = app($class);
+            $types[$type] = $c->name;
+        }
+        return $types;
     }
 
 }
