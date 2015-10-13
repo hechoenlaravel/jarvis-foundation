@@ -82,6 +82,12 @@ class FieldGeneratorCommand
     public $hidden;
 
     /**
+     * Order of the field?
+     * @var
+     */
+    public $order;
+
+    /**
      * @param string $entity_id
      * @param string $namespace
      * @param string $name
@@ -103,7 +109,8 @@ class FieldGeneratorCommand
         $required = false,
         $options = [],
         $default = null,
-        $hidden = 0
+        $hidden = 0,
+        $order = null
     ) {
         $this->entity_id = $entity_id;
         $this->namespace = $namespace;
@@ -117,6 +124,7 @@ class FieldGeneratorCommand
         $this->options = $options;
         $this->default = $default;
         $this->hidden = $hidden;
+        $this->order = $order;
     }
 
 }

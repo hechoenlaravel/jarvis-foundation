@@ -47,6 +47,10 @@ class TestCase extends Orchestra{
         ]);
     }
 
+    /**
+     * Creates an entity for testing purposes
+     * @return mixed
+     */
     protected function getAnEntity()
     {
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
@@ -65,6 +69,56 @@ class TestCase extends Orchestra{
             'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
         ]);
         return $return;
+    }
+
+    /**
+     * Creates some fields for testing purposes
+     * @param $entity
+     * @return bool
+     */
+    protected function setSomeFields($entity)
+    {
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $fields = [
+            [
+                'entity_id' => $entity->id,
+                'name' => 'first name',
+                'description' => 'field Description',
+                'slug' => 'first_name',
+                'locked' => 1,
+                'create_field' => 0,
+                'type' => 'text',
+                'options' => [
+                    'foo' => 'bar'
+                ],
+                'order' => 1
+            ],
+            [
+                'entity_id' => $entity->id,
+                'name' => 'last name',
+                'description' => 'field Description',
+                'slug' => 'last_name',
+                'locked' => 1,
+                'create_field' => 0,
+                'type' => 'text',
+                'options' => [
+                    'foo' => 'bar'
+                ],
+                'order' => 2
+            ]
+        ];
+        foreach($fields as $field)
+        {
+            $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', $field, [
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            ]);
+        }
+        return true;
     }
 
     /**
