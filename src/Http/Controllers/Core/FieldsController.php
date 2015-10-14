@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use JarvisPlatform\Http\Requests;
 use JarvisPlatform\Http\Controllers\Controller;
 use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
+use Hechoenlaravel\JarvisFoundation\Traits\EntityManager;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
+use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer;
 
 class FieldsController extends Controller
 {
 
-    use ResponderTrait;
+    use ResponderTrait, EntityManager;
 
     protected $model;
+
+    protected $fieldType;
 
     public function __construct(FieldModel $model)
     {
@@ -43,14 +47,18 @@ class FieldsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a field for the entity
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param String $id Entity Id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['entity_id'] = $id;
+        $field = $this->generateField($data);
+        return $this->responseWithItem($field, new FieldTransformer());
     }
 
     /**
@@ -96,5 +104,25 @@ class FieldsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function fieldTypeForm($type)
+    {
+        $this->setFieldType($type);
+        return $this->simpleArray(['form' => $this->fieldType->getOptionsForm()]);
+    }
+
+    /**
+     * @param $type
+     * @return \Illuminate\Foundation\Application|mixed
+     * @throws \NotAcceptableHttpException
+     */
+    private function setFieldType($type)
+    {
+        $fieldTypes = app('field.types');
+        if (!isset($fieldTypes->types[$type])) {
+            throw new \NotAcceptableHttpException('El field type ' . $type . ' no esta registrado');
+        }
+        $this->fieldType = app($fieldTypes->types[$type]);
     }
 }

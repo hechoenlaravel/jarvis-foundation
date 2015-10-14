@@ -41,8 +41,9 @@ class TestFieldGenerator extends TestCase
             ], [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             ]);
             $this->assertTrue(true);
         } catch (FieldTypeNotRegistered $e) {
@@ -70,8 +71,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
     }
 
@@ -91,8 +93,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
     }
 
@@ -114,8 +117,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
     }
@@ -138,8 +142,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertTrue(\Schema::hasColumn($entity->getTableName(), 'first_name'));
@@ -163,8 +168,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertFalse(\Schema::hasColumn($entity->getTableName(), 'first_name'));
@@ -191,8 +197,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals(serialize(['foo' => 'bar']), $field->options);
     }
@@ -219,8 +226,9 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals(3, $field->order);
     }
@@ -248,11 +256,44 @@ class TestFieldGenerator extends TestCase
         ], [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals(1, $field->order);
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
+    }
+
+    public function test_it_runs_the_pre_assign_event_on_field()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $entity = $this->getAnEntity();
+        $this->setSomeFields($entity);
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+            'entity_id' => $entity->id,
+            'name' => 'address',
+            'description' => 'field Description',
+            'slug' => 'address',
+            'locked' => 1,
+            'create_field' => 1,
+            'type' => 'slug',
+            'options' => [
+                'field' => 'first_name'
+            ],
+            'order' => 1
+        ], [
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
+        ]);
+        $f = unserialize($field->options);
+        dump($f);
+        $this->assertEquals('-', $f['separator']);
     }
 
 }

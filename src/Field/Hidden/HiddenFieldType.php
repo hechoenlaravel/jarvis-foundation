@@ -3,6 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Field\Hidden;
 
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
+use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
 
 /**
  * Class SlugFieldType
@@ -10,6 +11,8 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
  */
 class HiddenFieldType implements FieldTypeInterface
 {
+
+    use FieldTypeImplementationTrait;
 
     /**
      * @var
@@ -62,5 +65,14 @@ class HiddenFieldType implements FieldTypeInterface
     public function getPresenter()
     {
         return;
+    }
+
+    /**
+     * Que the form for the options of the field type
+     * @return mixed
+     */
+    public function getOptionsForm()
+    {
+        // TODO: Implement getOptionsForm() method.
     }
 }

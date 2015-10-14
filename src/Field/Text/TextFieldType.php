@@ -3,6 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Field\Text;
 
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
+use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
 
 /**
  * Class TextFieldType
@@ -10,6 +11,8 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
  */
 class TextFieldType implements FieldTypeInterface
 {
+
+    use FieldTypeImplementationTrait;
 
     /**
      * @var
@@ -62,5 +65,14 @@ class TextFieldType implements FieldTypeInterface
     public function getPresenter()
     {
         return;
+    }
+
+    /**
+     * Que the form for the options of the field type
+     * @return mixed
+     */
+    public function getOptionsForm()
+    {
+        return view('jarvisPlatform::field.text.optionsForm')->render();
     }
 }

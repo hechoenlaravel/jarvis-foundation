@@ -1,32 +1,22 @@
 <div class="" ng-controller="createFieldController">
     <div class="row">
-        <input type="hidden" name="returnUrl" value="{{$returnUrl}}" />
+        <input type="hidden" name="returnUrl" value="{{$returnUrl}}" ng-model="form.returnUrl" />
         <div class="col-md-6">
-            {!! Field::text('name', ['label' => 'Nombre']) !!}
+            {!! Field::text('name', ['label' => 'Nombre', 'ng-model' => 'form.name']) !!}
         </div>
         <div class="col-md-6">
-            {!! Field::select('name', $types, ['label' => 'Tipo', 'class' => 'select2']) !!}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            {!! Field::text('default', ['label' => 'Valor por defecto']) !!}
-        </div>
-        <div class="col-md-6">
-            {!! Field::select('required', ['0' => 'No', '1' => 'Si'], [1],['label' => 'Es requerido?']) !!}
+            {!! Field::select('type', $types, ['label' => 'Tipo', 'class' => 'select2', 'ng-model' => 'form.type', 'ng-change' => 'getFieldDetails()']) !!}
         </div>
     </div>
+    <div compile="formOptions"></div>
     <div class="row">
         <div class="col-md-12">
-            {!! Field::textarea('description', ['label' => 'Descripción']) !!}
+            {!! Field::textarea('description', ['label' => 'Descripción', 'ng-model' => 'form.description']) !!}
         </div>
     </div>
     <div class="row">
         <div class="col-md-2">
-            {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-block']) !!}
+            {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-block', 'ng-click' => 'createField()']) !!}
         </div>
     </div>
 </div>
-@section('scripts')
-
-@endsection

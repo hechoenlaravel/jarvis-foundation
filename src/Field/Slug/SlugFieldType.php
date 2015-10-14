@@ -3,6 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Field\Slug;
 
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
+use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
 
 /**
  * Class SlugFieldType
@@ -10,6 +11,8 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
  */
 class SlugFieldType implements FieldTypeInterface
 {
+
+    use FieldTypeImplementationTrait;
 
     /**
      * @var
@@ -62,5 +65,25 @@ class SlugFieldType implements FieldTypeInterface
     public function getPresenter()
     {
         return;
+    }
+
+    /**
+     * Que the form for the options of the field type
+     * @return mixed
+     */
+    public function getOptionsForm()
+    {
+        // TODO: Implement getOptionsForm() method.
+    }
+
+    /**
+     * Pre Assign Event to do anything the fieldType needs to.
+     * @param $command
+     */
+    public function preAssignEvent($command)
+    {
+        if(!isset($command->options['separator'])){
+            $command->options['separator'] = '-';
+        }
     }
 }

@@ -36,4 +36,24 @@ interface FieldTypeInterface {
      */
     public function getPresenter();
 
+    /**
+     * Que the form for the options of the field type
+     * @return mixed
+     */
+    public function getOptionsForm();
+
+    /**
+     * Generate a Slug based on the name
+     * @param $name
+     * @return mixed
+     */
+    public function generateSlug($name);
+
+    /**
+     * Runs before the field is assigned
+     * @param $command
+     * @return mixed
+     */
+    public function preAssignEvent($command);
+
 }
