@@ -73,6 +73,6 @@ class TextFieldType implements FieldTypeInterface
      */
     public function getOptionsForm()
     {
-        return view('jarvisPlatform::field.text.optionsForm')->render();
+        return view('jarvisPlatform::field.types.text.optionsForm')->render();
     }
 }

@@ -8,6 +8,7 @@ use JarvisPlatform\Http\Controllers\Controller;
 use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
 use Hechoenlaravel\JarvisFoundation\Traits\EntityManager;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
+use Hechoenlaravel\JarvisFoundation\Http\Requests\CreateFieldRequest;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer;
 
@@ -53,12 +54,14 @@ class FieldsController extends Controller
      * @param String $id Entity Id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(CreateFieldRequest $request, $id)
     {
         $data = $request->all();
         $data['entity_id'] = $id;
         $field = $this->generateField($data);
-        return $this->responseWithItem($field, new FieldTransformer());
+        return $this->response->item($field, new FieldTransformer(), [], function ($resource, $fractal) use ($data) {
+            $resource->setMetaValue('return_url', $data['returnUrl']);
+        });
     }
 
     /**

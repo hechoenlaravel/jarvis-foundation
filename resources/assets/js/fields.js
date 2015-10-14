@@ -10,7 +10,9 @@ JarvisPlatform.controller('createFieldController', ['$scope', 'fieldsService', f
         }
     }
     $scope.createField = function(){
-        console.log($scope.form);
+        fieldsService.createField(window.entity_id, $scope.form).success(function(data){
+            window.location.href = data.meta.return_url;
+        }).error(HandleErrorResponse);
     }
 }]);
 /** Services **/
