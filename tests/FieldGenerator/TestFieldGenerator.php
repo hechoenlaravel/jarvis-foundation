@@ -292,7 +292,6 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $f = unserialize($field->options);
-        dump($f);
         $this->assertEquals('-', $f['separator']);
     }
 
