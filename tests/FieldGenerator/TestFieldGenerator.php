@@ -42,6 +42,7 @@ class TestFieldGenerator extends TestCase
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             ]);
@@ -72,6 +73,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -94,6 +96,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -118,6 +121,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -143,6 +147,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -169,6 +174,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -198,6 +204,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -227,6 +234,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -257,6 +265,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
@@ -288,6 +297,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);

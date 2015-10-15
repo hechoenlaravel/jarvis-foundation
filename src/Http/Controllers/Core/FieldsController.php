@@ -12,13 +12,25 @@ use Hechoenlaravel\JarvisFoundation\Http\Requests\CreateFieldRequest;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer;
 
+/**
+ * Class FieldsController
+ * @package Hechoenlaravel\JarvisFoundation\Http\Controllers\Core
+ */
 class FieldsController extends Controller
 {
 
     use ResponderTrait, EntityManager;
 
+    /**
+     * Field Model
+     * @var FieldModel
+     */
     protected $model;
 
+    /**
+     * Field Type
+     * @var
+     */
     protected $fieldType;
 
     public function __construct(FieldModel $model)
@@ -109,6 +121,12 @@ class FieldsController extends Controller
         //
     }
 
+    /**
+     * Get the Assignment Form
+     * @param $type
+     * @return mixed
+     * @throws \NotAcceptableHttpException
+     */
     public function fieldTypeForm($type)
     {
         $this->setFieldType($type);

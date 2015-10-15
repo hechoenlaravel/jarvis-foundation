@@ -1,6 +1,5 @@
 <div class="" ng-controller="createFieldController">
     <div class="row">
-        <input type="hidden" name="returnUrl" value="{{$returnUrl}}" ng-model="form.returnUrl" />
         <div class="col-md-6">
             {!! Field::text('name', ['label' => 'Nombre', 'ng-model' => 'form.name']) !!}
         </div>
@@ -20,3 +19,6 @@
         </div>
     </div>
 </div>
+<script>
+    window.returnUrl = "{{$returnUrl}}";
+</script>
