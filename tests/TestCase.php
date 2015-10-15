@@ -34,6 +34,7 @@ class TestCase extends Orchestra{
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+        $app['config']->set('jwt.user', 'Hechoenlaravel\JarvisFoundation\Tests\Stubs\UserModel');
     }
 
     /**
