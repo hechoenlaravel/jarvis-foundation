@@ -305,4 +305,27 @@ class TestFieldGenerator extends TestCase
         $this->assertEquals('-', $f['separator']);
     }
 
+    public function test_it_edits_a_field()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldGeneratorHandler');
+        $entity = $this->getAnEntity();
+        $fields = $this->setSomeFields($entity);
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand', [
+            'id' => $fields[0]->id,
+            'name' => 'address',
+            'description' => 'field Description',
+            'default' => 'defaultTwo',
+            'required' => $fields[0]->required,
+            'options' => unserialize($fields[0]->options)
+        ], [
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\EditFieldTypeValidator',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
+        ]);
+        $this->assertEquals('defaultTwo', $field->default);
+    }
+
 }

@@ -27,6 +27,6 @@ class CallPreAssignEventOnField implements Middleware{
     private function setFieldType($type)
     {
         $fieldTypes = app('field.types');
-        return app($fieldTypes->types[$type]);
+        return $fieldTypes->getFieldClass($type);
     }
 }

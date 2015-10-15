@@ -25,4 +25,9 @@ class FieldTypes {
         $this->types[$field['type']] = $field['class'];
     }
 
+    public function getFieldClass($type)
+    {
+        return app($this->types[$type]);
+    }
+
 }

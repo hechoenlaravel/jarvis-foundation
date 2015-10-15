@@ -90,6 +90,7 @@ class TestCase extends Orchestra{
                 'locked' => 1,
                 'create_field' => 0,
                 'type' => 'text',
+                'default' => 'defaultOne',
                 'options' => [
                     'foo' => 'bar'
                 ],
@@ -109,16 +110,19 @@ class TestCase extends Orchestra{
                 'order' => 2
             ]
         ];
+        $fieldsGenerated = [];
         foreach($fields as $field)
         {
-            $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', $field, [
+            $fieldsGenerated[] = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', $field, [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             ]);
         }
-        return true;
+        return $fieldsGenerated;
     }
 
     /**

@@ -3,8 +3,10 @@
 namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
 
-use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
+use Javascript;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypes;
+use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
+use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 
 /**
  * Class FormBuilder
@@ -31,6 +33,24 @@ class FormBuilder {
     protected $types;
 
     /**
+     * When edit, it should have a model to work with
+     * @var
+     */
+    protected $model;
+
+    /**
+     * Is the edit form?
+     * @var bool
+     */
+    protected $isEdit = false;
+
+    /**
+     * Field Type
+     * @var
+     */
+    protected $type;
+
+    /**
      * Create a new Object
      * @param EntityModel $entity
      */
@@ -50,19 +70,45 @@ class FormBuilder {
     }
 
     /**
+     * @param FieldModel $model
+     */
+    public function setModel(FieldModel $model)
+    {
+        $this->model = $model;
+        $this->isEdit = true;
+        $this->type = $this->types->getFieldClass($model->type);
+    }
+
+    /**
      * render the form to add the field
      * @return string
      */
     public function render()
     {
-        $view = view('jarvisPlatform::field.admin.fieldform')
+        if(!$this->isEdit){
+            $view = view('jarvisPlatform::field.admin.fieldform')
+                ->with('entity', $this->entity)
+                ->with('returnUrl', $this->url)
+                ->with('types', $this->getFieldTypes())
+                ->render();
+            return $view;
+        }
+        JavaScript::put([
+            'fieldForm' => $this->model->transformed()->toArray()
+        ]);
+        $view = view('jarvisPlatform::field.admin.fieldformedit')
             ->with('entity', $this->entity)
             ->with('returnUrl', $this->url)
+            ->with('fieldAssignmentForm', $this->type->getOptionsForm())
             ->with('types', $this->getFieldTypes())
             ->render();
         return $view;
     }
 
+    /**
+     * Get the Field Types
+     * @return array
+     */
     public function getFieldTypes()
     {
         $types = [];

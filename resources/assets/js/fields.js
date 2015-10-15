@@ -15,6 +15,18 @@ JarvisPlatform.controller('createFieldController', ['$scope', 'fieldsService', f
             window.location.href = data.meta.return_url;
         }).error(HandleErrorResponse);
     }
+
+    $scope.editField = function(){
+        $scope.form.returnUrl = window.returnUrl;
+        fieldsService.editField(window.entity_id, $scope.form).success(function(data){
+            window.location.href = data.meta.return_url;
+        }).error(HandleErrorResponse);
+    }
+
+    if(window.isEdit == "1")
+    {
+        $scope.form = window.fieldForm.data;
+    }
 }]);
 /** Services **/
 JarvisPlatform.factory('fieldsService', ['$http', function($http) {
@@ -43,6 +55,17 @@ JarvisPlatform.factory('fieldsService', ['$http', function($http) {
         {
             return $http({
                 method: 'post',
+                url: GLOBALS.site_url+'/api/core/entity/'+entity+'/fields',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: form
+            });
+        },
+        editField: function(entity, form)
+        {
+            return $http({
+                method: 'put',
                 url: GLOBALS.site_url+'/api/core/entity/'+entity+'/fields',
                 headers: {
                     'Content-Type' : 'application/json'

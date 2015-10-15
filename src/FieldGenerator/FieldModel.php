@@ -2,7 +2,10 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
 
+use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer;
 use Illuminate\Database\Eloquent\Model;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
 
 /**
  * Class FieldModel
@@ -63,6 +66,17 @@ class FieldModel extends Model{
     public function scopeByEntity($query, $id)
     {
         return $query->where('entity_id', $id);
+    }
+
+    /**
+     * Return a Fractal Scope Intance for the model.
+     * @return \League\Fractal\Scope
+     */
+    public function transformed()
+    {
+        $manager = new Manager();
+        $resource = new Item($this, new FieldTransformer());
+        return $manager->createData($resource);
     }
 
 }

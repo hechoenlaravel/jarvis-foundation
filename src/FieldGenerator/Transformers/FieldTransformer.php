@@ -9,6 +9,8 @@ class FieldTransformer extends TransformerAbstract{
 
     public function transform(FieldModel $field)
     {
+        $fieldTypes = app('field.types');
+        $type = $fieldTypes->getFieldClass($field->type);
         return [
             'id' => $field->id,
             'namespace' => $field->namespace,
@@ -19,7 +21,15 @@ class FieldTransformer extends TransformerAbstract{
             'options' => unserialize($field->options),
             'locked' => (bool) $field->locked,
             'hidden' => (bool) $field->hidden,
-            'order' => $field->order
+            'order' => $field->order,
+            'default' => $field->default,
+            'required' => (string)$field->required,
+            'links' => [
+                'edit' => route('users.config.edit', ['id' => $field->id])
+            ],
+            'fieldType' => [
+                'name' => $type->name
+            ]
         ];
     }
 
