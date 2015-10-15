@@ -88,7 +88,7 @@ class TestCase extends Orchestra{
                 'description' => 'field Description',
                 'slug' => 'first_name',
                 'locked' => 1,
-                'create_field' => 0,
+                'create_field' => 1,
                 'type' => 'text',
                 'default' => 'defaultOne',
                 'options' => [
@@ -102,7 +102,7 @@ class TestCase extends Orchestra{
                 'description' => 'field Description',
                 'slug' => 'last_name',
                 'locked' => 1,
-                'create_field' => 0,
+                'create_field' => 1,
                 'type' => 'text',
                 'options' => [
                     'foo' => 'bar'

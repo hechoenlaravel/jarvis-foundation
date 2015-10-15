@@ -2,9 +2,9 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware;
 
-use Hechoenlaravel\JarvisFoundation\Exceptions\FieldValidationException;
-use League\Tactician\Middleware;
 use Validator;
+use League\Tactician\Middleware;
+use Hechoenlaravel\JarvisFoundation\Exceptions\FieldValidationException;
 
 /**
  * Class FieldGeneratorValidator

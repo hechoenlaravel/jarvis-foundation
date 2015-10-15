@@ -40,12 +40,6 @@ class EditFieldGeneratorCommand {
     public $locked;
 
     /**
-     * Should the field be created in the DB table
-     * @var
-     */
-    public $create_field;
-
-    /**
      * what is the fieldtype
      * @var
      */
@@ -68,18 +62,6 @@ class EditFieldGeneratorCommand {
      * @var
      */
     public $default;
-
-    /**
-     * is a hidden field?
-     * @var
-     */
-    public $hidden;
-
-    /**
-     * Order of the field?
-     * @var
-     */
-    public $order;
 
 
     /**

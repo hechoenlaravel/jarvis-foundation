@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasCreated' => [
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\CreateColumnInDatabase'
+        ],
+        'Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasEdited' => [
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\RenameColumn'
         ]
     ];
 

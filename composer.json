@@ -12,7 +12,8 @@
         "php": ">=5.4.0",
         "joselfonseca/laravel-tactician" : "0.2.*",
         "joselfonseca/laravel-api-tools": "1.2.*",
-        "styde/html": "~1.0"
+        "styde/html": "~1.0",
+        "doctrine/dbal": "^2.6@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.0",
