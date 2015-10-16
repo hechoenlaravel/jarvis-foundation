@@ -62,7 +62,7 @@ class EmailFieldType implements FieldTypeInterface
      * Get the presenter class if any
      * @return mixed
      */
-    public function getPresenter()
+    public function present()
     {
         return;
     }
