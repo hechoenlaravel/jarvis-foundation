@@ -6,7 +6,7 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasEdited;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class EditFieldGeneratorHandler {
+class EditFieldCommandHandler {
 
     /**
      * Handle the creation of the Field in the Database

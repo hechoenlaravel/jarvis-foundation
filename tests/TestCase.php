@@ -80,8 +80,8 @@ class TestCase extends Orchestra{
     protected function setSomeFields($entity)
     {
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $fields = [
             [
                 'entity_id' => $entity->id,
@@ -114,7 +114,7 @@ class TestCase extends Orchestra{
         $fieldsGenerated = [];
         foreach($fields as $field)
         {
-            $fieldsGenerated[] = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', $field, [
+            $fieldsGenerated[] = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', $field, [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',

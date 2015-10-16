@@ -10,7 +10,7 @@ use Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasCreated;
  * Class FieldGeneratorHandler
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler
  */
-class FieldGeneratorHandler {
+class CreateFieldCommandHandler {
 
     /**
      * Handle the creation of the Field in the Database

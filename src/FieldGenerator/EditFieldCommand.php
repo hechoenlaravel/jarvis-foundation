@@ -2,24 +2,18 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
 
+
 /**
- * Class FieldGeneratorCommand
+ * Class EditFieldGeneratorCommand
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator
  */
-class FieldGeneratorCommand
-{
+class EditFieldCommand {
 
     /**
-     * The entity related to the field
+     * The field Id
      * @var
      */
-    public $entity_id;
-
-    /**
-     * The field namespace
-     * @var
-     */
-    public $namespace;
+    public $id;
 
     /**
      * the field name
@@ -46,12 +40,6 @@ class FieldGeneratorCommand
     public $locked;
 
     /**
-     * Should the field be created in the DB table
-     * @var
-     */
-    public $create_field;
-
-    /**
      * what is the fieldtype
      * @var
      */
@@ -75,56 +63,29 @@ class FieldGeneratorCommand
      */
     public $default;
 
-    /**
-     * is a hidden field?
-     * @var
-     */
-    public $hidden;
 
     /**
-     * Order of the field?
-     * @var
-     */
-    public $order;
-
-    /**
-     * @param string $entity_id
-     * @param string $namespace
+     * @param $id
      * @param string $name
      * @param string $description
-     * @param string $slug
-     * @param bool $locked
-     * @param bool $create_field
-     * @param string $type
+     * @param bool $required
+     * @param array $options
+     * @param null $default
      */
     function __construct(
-        $entity_id = "",
-        $namespace = "",
+        $id,
         $name = "",
         $description = "",
-        $slug = "",
-        $locked = true,
-        $create_field = true,
-        $type = "",
         $required = false,
         $options = [],
-        $default = null,
-        $hidden = 0,
-        $order = null
+        $default = null
     ) {
-        $this->entity_id = $entity_id;
-        $this->namespace = $namespace;
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->slug = $slug;
-        $this->locked = $locked;
-        $this->create_field = $create_field;
-        $this->type = $type;
         $this->required = $required;
         $this->options = $options;
         $this->default = $default;
-        $this->hidden = $hidden;
-        $this->order = $order;
     }
 
 }

@@ -34,8 +34,8 @@ trait EntityManager {
      */
     public function generateField(array $data = [])
     {
-        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler', $data, [
+        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler', $data, [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
@@ -52,8 +52,8 @@ trait EntityManager {
      */
     public function editField(array $data = [])
     {
-        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldGeneratorHandler', $data, [
+        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldCommandHandler', $data, [
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\EditFieldTypeValidator',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetFieldTypeOnEdit',
@@ -61,6 +61,14 @@ trait EntityManager {
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
                 'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
             ]);
+    }
+
+    public function deleteField($id)
+    {
+        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\DeleteFieldCommandHandler', [
+            'id' => $id
+        ]);
     }
 
 }

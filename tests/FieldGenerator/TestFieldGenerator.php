@@ -18,8 +18,8 @@ class TestFieldGenerator extends TestCase
      */
     public function test_it_gets_the_field_generator_command()
     {
-        $FieldCreatorCommand = app('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand');
-        $this->assertInstanceOf('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
+        $FieldCreatorCommand = app('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand');
+        $this->assertInstanceOf('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
             $FieldCreatorCommand);
     }
 
@@ -27,10 +27,10 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         try {
-            $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+            $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
                 'entity_id' => $this->getAnEntity()->id,
                 'name' => 'first name',
                 'description' => 'field Description',
@@ -59,9 +59,9 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $this->getAnEntity()->id,
             'name' => 'first name',
             'description' => 'field Description',
@@ -86,9 +86,9 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'locked' => 1,
             'create_field' => 1,
             'type' => 'text'
@@ -106,10 +106,10 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'first name',
             'description' => 'field Description',
@@ -132,10 +132,10 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'first name',
             'description' => 'field Description',
@@ -159,10 +159,10 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'first name',
             'description' => 'field Description',
@@ -186,10 +186,10 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'first name',
             'description' => 'field Description',
@@ -215,11 +215,11 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
         $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'address',
             'description' => 'field Description',
@@ -245,11 +245,11 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
         $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'address',
             'description' => 'field Description',
@@ -277,11 +277,11 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\FieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
         $entity = $this->getAnEntity();
         $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
             'entity_id' => $entity->id,
             'name' => 'address',
             'description' => 'field Description',
@@ -309,11 +309,11 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldCommandHandler');
         $entity = $this->getAnEntity();
         $fields = $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldCommand', [
             'id' => $fields[0]->id,
             'name' => 'address',
             'description' => 'field Description',
@@ -335,11 +335,11 @@ class TestFieldGenerator extends TestCase
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldGeneratorHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldCommandHandler');
         $entity = $this->getAnEntity();
         $fields = $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand', [
+        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldCommand', [
             'id' => $fields[0]->id,
             'name' => 'address',
             'description' => 'field Description',
@@ -357,6 +357,22 @@ class TestFieldGenerator extends TestCase
         $this->assertEquals('address', $field->slug);
         $this->assertFalse(\Schema::hasColumn($fields[0]->entity->getTableName(), 'first_name'));
         $this->assertTrue(\Schema::hasColumn($fields[0]->entity->getTableName(), 'address'));
+    }
+
+    public function test_it_delete_a_field_in_db()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\DeleteFieldCommandHandler');
+        $entity = $this->getAnEntity();
+        $fields = $this->setSomeFields($entity);
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand', [
+            'id' => $fields[0]->id
+        ], [
+
+        ]);
+        $this->assertFalse(\Schema::hasColumn($fields[0]->entity->getTableName(), 'first_name'));
     }
 
 }

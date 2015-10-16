@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
+use Hechoenlaravel\JarvisFoundation\Http\Requests\EditFieldRequest;
 use Illuminate\Http\Request;
 use JarvisPlatform\Http\Requests;
 use JarvisPlatform\Http\Controllers\Controller;
@@ -88,26 +89,20 @@ class FieldsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditFieldRequest $request, $id, $fields)
     {
-        //
+        $data = $request->all();
+        $data['id'] = $fields;
+        $field = $this->editField($data);
+        return $this->response->item($field, new FieldTransformer(), [], function ($resource, $fractal) use ($data) {
+            $resource->setMetaValue('return_url', $data['returnUrl']);
+        });
     }
 
     /**
@@ -116,9 +111,10 @@ class FieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $fields)
     {
-        //
+        $this->deleteField($fields);
+        return $this->responseNoContent();
     }
 
     /**
