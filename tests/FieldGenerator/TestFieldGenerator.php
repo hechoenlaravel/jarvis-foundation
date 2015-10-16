@@ -325,6 +325,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetFieldTypeOnEdit',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetCommandDataFromEditFieldModel',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals('defaultTwo', $field->default);
@@ -350,6 +351,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetFieldTypeOnEdit',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetCommandDataFromEditFieldModel',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals('address', $field->slug);

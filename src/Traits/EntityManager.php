@@ -45,4 +45,22 @@ trait EntityManager {
             ]);
     }
 
+    /**
+     * Edit a field
+     * @param array $data
+     * @return mixed
+     */
+    public function editField(array $data = [])
+    {
+        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\EditFieldGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\EditFieldGeneratorHandler', $data, [
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\EditFieldTypeValidator',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetFieldTypeOnEdit',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\SetCommandDataFromEditFieldModel',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
+                'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
+            ]);
+    }
+
 }
