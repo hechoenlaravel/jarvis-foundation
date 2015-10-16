@@ -38,4 +38,9 @@ class EntityModel extends Model{
         return $this->prefix.'_'.$this->slug;
     }
 
+    public function fields()
+    {
+        return $this->hasMany('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel', 'entity_id');
+    }
+
 }

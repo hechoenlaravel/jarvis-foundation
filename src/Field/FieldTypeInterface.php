@@ -31,10 +31,10 @@ interface FieldTypeInterface {
     public function getValue();
 
     /**
-     * Get the presenter class if any
+     * present the form
      * @return mixed
      */
-    public function getPresenter();
+    public function present();
 
     /**
      * Que the form for the options of the field type

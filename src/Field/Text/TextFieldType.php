@@ -4,6 +4,7 @@ namespace Hechoenlaravel\JarvisFoundation\Field\Text;
 
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
+use Styde\Html\Facades\Field;
 
 /**
  * Class TextFieldType
@@ -29,6 +30,30 @@ class TextFieldType implements FieldTypeInterface
      * @var string
      */
     public $name = "Texto";
+
+    /**
+     * The field slug for the instance
+     * @var
+     */
+    public $fieldSlug;
+
+    /**
+     * The field Name for the instance
+     * @var
+     */
+    public $fieldName;
+
+    /**
+     * The field description for the instance
+     * @var
+     */
+    public $fieldDescription;
+
+    /**
+     * The field Options for the Instance
+     * @var
+     */
+    public $fieldOptions;
 
     /**
      * get the column type for this field type
@@ -62,9 +87,9 @@ class TextFieldType implements FieldTypeInterface
      * Get the presenter class if any
      * @return mixed
      */
-    public function getPresenter()
+    public function present()
     {
-        return;
+        return Field::text($this->fieldSlug, $this->value, ['label' => $this->fieldName]);
     }
 
     /**
