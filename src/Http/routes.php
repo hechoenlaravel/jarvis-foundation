@@ -5,6 +5,7 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->group(['prefix' => 'core', 'namespace' => 'Hechoenlaravel\JarvisFoundation\Http\Controllers'], function($api) {
         $api->resource('entity/{id}/fields', 'Core\FieldsController', ['only' => ['index', 'store', 'update', 'destroy']]);
+        $api->put('entity/{id}/order-fields', 'Core\FieldsController@reOrderFieldId');
         $api->get('field-type/{type}/form', 'Core\FieldsController@fieldTypeForm');
     });
 });

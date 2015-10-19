@@ -2,13 +2,13 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
-use Hechoenlaravel\JarvisFoundation\Http\Requests\EditFieldRequest;
 use Illuminate\Http\Request;
 use JarvisPlatform\Http\Requests;
 use JarvisPlatform\Http\Controllers\Controller;
 use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
 use Hechoenlaravel\JarvisFoundation\Traits\EntityManager;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
+use Hechoenlaravel\JarvisFoundation\Http\Requests\EditFieldRequest;
 use Hechoenlaravel\JarvisFoundation\Http\Requests\CreateFieldRequest;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer;
@@ -46,18 +46,8 @@ class FieldsController extends Controller
      */
     public function index($id)
     {
-        $model = $this->model->byEntity($id)->orderBy('order', 'DESC');
+        $model = $this->model->byEntity($id)->orderBy('order', 'ASC');
         return $this->responseWithCollection($model, new FieldTransformer());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -85,7 +75,7 @@ class FieldsController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->responseWithItem($this->model->findOrFail($id), new FieldTransformer());
     }
 
     /**
@@ -141,5 +131,18 @@ class FieldsController extends Controller
             throw new \NotAcceptableHttpException('El field type ' . $type . ' no esta registrado');
         }
         $this->fieldType = app($fieldTypes->types[$type]);
+    }
+
+    /**
+     * Re order the field
+     * @param Request $request
+     * @param $id
+     * @param $field
+     * @return mixed
+     */
+    public function reOrderFieldId(Request $request, $id)
+    {
+        $this->reOrderField($request->get('items'));
+        return $this->simpleArray(['ok' => true]);
     }
 }

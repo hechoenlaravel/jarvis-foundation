@@ -359,20 +359,24 @@ class TestFieldGenerator extends TestCase
         $this->assertTrue(\Schema::hasColumn($fields[0]->entity->getTableName(), 'address'));
     }
 
-    public function test_it_delete_a_field_in_db()
+    public function test_it_re_order_fields()
     {
         $this->migrateDatabase();
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\DeleteFieldCommandHandler');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\ReOrderFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\ReOrderFieldCommandHandler');
         $entity = $this->getAnEntity();
         $fields = $this->setSomeFields($entity);
-        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand', [
-            'id' => $fields[0]->id
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\ReOrderFieldCommand', [
+            'fields' => [
+                $fields[1]->id,
+                $fields[0]->id
+            ]
         ], [
 
         ]);
-        $this->assertFalse(\Schema::hasColumn($fields[0]->entity->getTableName(), 'first_name'));
+        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'last_name', 'order' => 1]);
+        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
     }
 
 }

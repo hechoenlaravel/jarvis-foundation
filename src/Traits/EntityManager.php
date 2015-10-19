@@ -63,12 +63,31 @@ trait EntityManager {
             ]);
     }
 
+    /**
+     * Delete a Field
+     * @param $id
+     * @return mixed
+     */
     public function deleteField($id)
     {
         return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\DeleteFieldCommand',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\DeleteFieldCommandHandler', [
             'id' => $id
         ]);
+    }
+
+    /**
+     * Re order from a field
+     * @param $id
+     * @param $order
+     * @return mixed
+     */
+    public function reOrderField($items)
+    {
+        return $this->execute('Hechoenlaravel\JarvisFoundation\FieldGenerator\ReOrderFieldCommand',
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\ReOrderFieldCommandHandler', [
+                'fields' => $items
+            ]);
     }
 
 }
