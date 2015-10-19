@@ -4,29 +4,55 @@ namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 
+/**
+ * Builds the fields HTML for a form
+ * Class EntityFieldsFormBuilder
+ * @package Hechoenlaravel\JarvisFoundation\UI\Field
+ */
 class EntityFieldsFormBuilder
 {
 
+    /**
+     * @var EntityModel
+     */
     public $entity;
 
+    /**
+     * @var \Illuminate\Foundation\Application|mixed
+     */
     protected $typeResolver;
 
+    /**
+     * @var array
+     */
     protected $types = [];
 
+    /**
+     * @var array
+     */
     protected $presenters = [];
 
+    /**
+     * @param EntityModel $entity
+     */
     public function __construct(EntityModel $entity)
     {
         $this->entity = $entity;
         $this->typeResolver = app('field.types');
     }
 
+    /**
+     * @return $this
+     */
     public function render()
     {
         $this->setFieldTypes();
         return view('jarvisPlatform::field.form')->with('fields', $this->types);
     }
 
+    /**
+     * @return $this
+     */
     protected function setFieldTypes()
     {
         $i = 0;
