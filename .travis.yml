@@ -8,6 +8,11 @@ php:
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-source --no-interaction --dev
+  - travis_retry composer update --no-interaction --prefer-stable
+  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
 
-script: phpunit
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.clover
+
+after_script:
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
