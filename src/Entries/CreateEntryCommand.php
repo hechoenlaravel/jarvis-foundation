@@ -20,17 +20,17 @@ class CreateEntryCommand
      * The data to be stored
      * @var array
      */
-    public $data = [];
+    public $input = [];
 
     /**
      * CreateEntryCommand constructor.
      * @param $entity
      * @param array $data
      */
-    public function __construct($entity, array $data)
+    public function __construct($entity, array $input)
     {
         $this->entity = $entity;
-        $this->data = $data;
+        $this->input = $input;
     }
 
 }

@@ -70,7 +70,7 @@ class ValidateEntryData implements Middleware
      */
     protected function performValidation($command)
     {
-        $validator = Validator::make($command->data, $this->rules);
+        $validator = Validator::make($command->input, $this->rules);
         if ($validator->fails()) {
             throw new EntryValidationException($validator);
         }

@@ -76,12 +76,35 @@ class TestEntriesCommands extends TestCase{
             'Hechoenlaravel\JarvisFoundation\Entries\Handler\CreateEntryCommandHandler');
         $bus->dispatch('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand', [
             'entity' => $entity->id,
-            'data' => [
+            'input' => [
                 'last_name' => 'Fonseca'
             ]
         ], [
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+        ]);
+    }
+
+    public function test_it_saves_the_entry()
+    {
+        $this->migrateDatabase();
+        $entity = $this->getEntityWithFields();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand',
+            'Hechoenlaravel\JarvisFoundation\Entries\Handler\CreateEntryCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand', [
+            'entity' => $entity->id,
+            'input' => [
+                'first_name' => 'Jose Luis',
+                'last_name' => 'Fonseca'
+            ]
+        ], [
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+        ]);
+        $this->seeInDatabase($entity->namespace.'_'.$entity->slug, [
+            'first_name' => 'Jose Luis',
+            'last_name' => 'Fonseca'
         ]);
     }
 
