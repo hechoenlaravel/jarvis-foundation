@@ -21,7 +21,7 @@ class TestEntriesCommands extends TestCase{
                 'create_field' => 1,
                 'type' => 'text',
                 'default' => 'defaultOne',
-                'required', 1,
+                'required' => 1,
                 'options' => [
                     'foo' => 'bar'
                 ],
@@ -56,11 +56,33 @@ class TestEntriesCommands extends TestCase{
         return $fieldsGenerated;
     }
 
-    public function test_it_saves_an_entry_for_entity()
+    public function getEntityWithFields()
     {
         $entity = $this->getAnEntity();
-        $fields = $this->setFieldsForEntryTests($entity);
-        
+        $this->setFieldsForEntryTests($entity);
+        return $entity;
+    }
+
+
+    /**
+     * @expectedException Hechoenlaravel\JarvisFoundation\Exceptions\EntryValidationException
+     */
+    public function test_it_validates_an_entry_for_entity_and_throws_exception_if_missing_data()
+    {
+        $this->migrateDatabase();
+        $entity = $this->getEntityWithFields();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand',
+            'Hechoenlaravel\JarvisFoundation\Entries\Handler\CreateEntryCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand', [
+            'entity' => $entity->id,
+            'data' => [
+                'last_name' => 'Fonseca'
+            ]
+        ], [
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+        ]);
     }
 
 }

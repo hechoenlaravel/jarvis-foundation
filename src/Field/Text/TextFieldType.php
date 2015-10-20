@@ -2,9 +2,9 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field\Text;
 
+use Styde\Html\Facades\Field;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
-use Styde\Html\Facades\Field;
 
 /**
  * Class TextFieldType
@@ -54,6 +54,12 @@ class TextFieldType implements FieldTypeInterface
      * @var
      */
     public $fieldOptions;
+
+    /**
+     * Validation rules for the field type
+     * @var array
+     */
+    public $validationRules = ['string'];
 
     /**
      * get the column type for this field type
