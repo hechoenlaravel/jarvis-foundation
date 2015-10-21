@@ -20,10 +20,10 @@ class CreateEntryCommandHandler
     {
         $command->input['created_at'] = Carbon::now();
         $command->input['updated_at'] = Carbon::now();
-        $entry = DB::table($command->entity->getTableName())->insert($command->input);
+        $entry = DB::table($command->entity->getTableName())->insertGetId($command->input);
         event(new EntryWasInserted($command->entity, $entry, $command->input));
         return [
-            'entry' => $entry,
+            'entry_id' => $entry,
             'input' => $command->input
         ];
     }
