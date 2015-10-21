@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
+use DB;
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 
 /**
@@ -39,6 +40,16 @@ class EntityFieldsFormBuilder
     {
         $this->entity = $entity;
         $this->typeResolver = app('field.types');
+        $this->setFieldTypes();
+    }
+
+    public function setRowId($id)
+    {
+        $this->entry = DB::table($this->entity->getTableName())->where('id', $id)->first();
+        foreach($this->types as $field)
+        {
+            $field->setValue($this->entry->{$field->fieldSlug});
+        }
     }
 
     /**
@@ -46,8 +57,8 @@ class EntityFieldsFormBuilder
      */
     public function render()
     {
-        $this->setFieldTypes();
-        return view('jarvisPlatform::field.form')->with('fields', $this->types);
+        return view('jarvisPlatform::field.form')
+            ->with('fields', $this->types);
     }
 
     /**
@@ -56,7 +67,7 @@ class EntityFieldsFormBuilder
     protected function setFieldTypes()
     {
         $i = 0;
-        foreach($this->entity->fields as $field){
+        foreach ($this->entity->fields as $field) {
             $this->types[$i] = $this->typeResolver->getFieldClass($field->type);
             $this->types[$i]->fieldSlug = $field->slug;
             $this->types[$i]->fieldName = $field->name;
@@ -64,6 +75,7 @@ class EntityFieldsFormBuilder
             $this->types[$i]->fieldOptions = $field->options;
             $i++;
         }
+
         return $this;
     }
 

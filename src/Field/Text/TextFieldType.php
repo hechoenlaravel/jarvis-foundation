@@ -90,7 +90,7 @@ class TextFieldType implements FieldTypeInterface
     }
 
     /**
-     * Get the presenter class if any
+     * return the form view
      * @return mixed
      */
     public function present()
