@@ -81,8 +81,30 @@ class TestEntriesCommands extends TestCase{
             ]
         ], [
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
-            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
+    }
+
+    public function test_it_runs_pre_save_method_in_field_type()
+    {
+        $this->migrateDatabase();
+        $entity = $this->getEntityWithFields();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand',
+            'Hechoenlaravel\JarvisFoundation\Entries\Handler\CreateEntryCommandHandler');
+        $entry = $bus->dispatch('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand', [
+            'entity' => $entity->id,
+            'input' => [
+                'first_name' => 'JOSE LUIS',
+                'last_name' => 'Fonseca'
+            ]
+        ], [
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
+        ]);
+        $this->assertEquals('jose luis', $entry['input']['first_name']);
     }
 
     public function test_it_saves_the_entry()
@@ -100,11 +122,12 @@ class TestEntriesCommands extends TestCase{
             ]
         ], [
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
-            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
-        $this->seeInDatabase($entity->namespace.'_'.$entity->slug, [
-            'first_name' => 'Jose Luis',
-            'last_name' => 'Fonseca'
+        $this->seeInDatabase($entity->getTableName(), [
+            'first_name' => 'jose luis',
+            'last_name' => 'fonseca'
         ]);
     }
 

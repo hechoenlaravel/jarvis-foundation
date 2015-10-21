@@ -13,14 +13,14 @@ use Hechoenlaravel\JarvisFoundation\Entries\Events\EntryWasInserted;
 class CreateEntryCommandHandler
 {
     /**
+     * Insert the record in the DB
      * @param $command
      */
     public function handle($command)
     {
-        $table = $command->entity->namespace.'_'.$command->entity->slug;
         $command->input['created_at'] = Carbon::now();
         $command->input['updated_at'] = Carbon::now();
-        $entry = DB::table($table)->insert($command->input);
+        $entry = DB::table($command->entity->getTableName())->insert($command->input);
         event(new EntryWasInserted($command->entity, $entry, $command->input));
         return [
             'entry' => $entry,

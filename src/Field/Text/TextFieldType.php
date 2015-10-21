@@ -106,4 +106,14 @@ class TextFieldType implements FieldTypeInterface
     {
         return view('jarvisPlatform::field.types.text.optionsForm')->render();
     }
+
+    /**
+     * Take the value and capitalize the first letter.
+     * @param $value
+     * @return string
+     */
+    public function preSaveEvent($value)
+    {
+        return strtolower($value);
+    }
 }

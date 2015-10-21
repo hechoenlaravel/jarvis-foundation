@@ -28,4 +28,14 @@ trait FieldTypeImplementationTrait {
 
     }
 
+    /**
+     * By default wont do anything before saving
+     * @param $value
+     * @return mixed
+     */
+    public function preSaveEvent($value)
+    {
+        return $value;
+    }
+
 }

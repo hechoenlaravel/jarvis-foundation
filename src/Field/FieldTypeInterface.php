@@ -56,4 +56,11 @@ interface FieldTypeInterface {
      */
     public function preAssignEvent($command);
 
+    /**
+     * Runs before saving to DB
+     * @param $value
+     * @return mixed
+     */
+    public function preSaveEvent($value);
+
 }
