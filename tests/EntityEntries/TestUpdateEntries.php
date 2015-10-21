@@ -20,6 +20,7 @@ class TestUpdateEntries extends TestEntriesCommands{
         ], [
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\FilterFieldFromInput',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
         return [
@@ -45,6 +46,7 @@ class TestUpdateEntries extends TestEntriesCommands{
         ], [
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+            'Hechoenlaravel\JarvisFoundation\Entries\Middleware\FilterFieldFromInput',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
         $this->seeInDatabase($preparedData['entity']->getTableName(), [
