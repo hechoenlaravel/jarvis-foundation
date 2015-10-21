@@ -26,7 +26,8 @@ trait EntryManager
         return $this->execute('Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommand',
             'Hechoenlaravel\JarvisFoundation\Entries\CreateEntryCommandHandler', $input, [
                 'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
-                'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData'
+                'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+                'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
             ]);
     }
 
