@@ -5,11 +5,3 @@ tools:
     php_pdepend: true
     php_analyzer: true
     external_code_coverage: true
-build:
-    tests:
-        override:
-            -
-                command: 'phpunit --coverage-clover=some-file'
-                coverage:
-                    file: 'some-file'
-                    format: 'php-clover'
