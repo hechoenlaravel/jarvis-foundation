@@ -64,7 +64,7 @@ class TextAreaFieldType implements FieldTypeInterface
      */
     public function present()
     {
-        return;
+        return Field::textarea($this->fieldSlug, $this->value, ['label' => $this->fieldName]);
     }
 
     /**
@@ -73,6 +73,6 @@ class TextAreaFieldType implements FieldTypeInterface
      */
     public function getOptionsForm()
     {
-        // TODO: Implement getOptionsForm() method.
+        return view('jarvisPlatform::field.types.textarea.optionsForm')->render();
     }
 }

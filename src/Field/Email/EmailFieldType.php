@@ -64,7 +64,7 @@ class EmailFieldType implements FieldTypeInterface
      */
     public function present()
     {
-        return;
+        return Field::email($this->fieldSlug, $this->value, ['label' => $this->fieldName]);
     }
 
     /**
@@ -73,6 +73,6 @@ class EmailFieldType implements FieldTypeInterface
      */
     public function getOptionsForm()
     {
-
+        return view('jarvisPlatform::field.types.email.optionsForm')->render();
     }
 }

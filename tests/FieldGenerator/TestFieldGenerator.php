@@ -273,38 +273,6 @@ class TestFieldGenerator extends TestCase
         $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
     }
 
-    public function test_it_runs_the_pre_assign_event_on_field()
-    {
-        $this->migrateDatabase();
-        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler\CreateFieldCommandHandler');
-        $entity = $this->getAnEntity();
-        $this->setSomeFields($entity);
-        $field = $bus->dispatch('Hechoenlaravel\JarvisFoundation\FieldGenerator\CreateFieldCommand', [
-            'entity_id' => $entity->id,
-            'name' => 'address',
-            'description' => 'field Description',
-            'slug' => 'address',
-            'locked' => 1,
-            'create_field' => 1,
-            'type' => 'slug',
-            'options' => [
-                'field' => 'first_name'
-            ],
-            'order' => 1
-        ], [
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldGeneratorValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldTypeValidator',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOrderSetter',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CreateTheFieldSlug',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
-        ]);
-        $f = unserialize($field->options);
-        $this->assertEquals('-', $f['separator']);
-    }
-
     public function test_it_edits_a_field()
     {
         $this->migrateDatabase();

@@ -64,7 +64,7 @@ class HiddenFieldType implements FieldTypeInterface
      */
     public function present()
     {
-        return;
+        return Field::hidden($this->fieldSlug, $this->value);
     }
 
     /**
@@ -73,6 +73,6 @@ class HiddenFieldType implements FieldTypeInterface
      */
     public function getOptionsForm()
     {
-        // TODO: Implement getOptionsForm() method.
+        return view('jarvisPlatform::field.types.hidden.optionsForm')->render();
     }
 }

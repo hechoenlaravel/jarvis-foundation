@@ -17,7 +17,6 @@ class FieldsServiceProvider extends ServiceProvider{
     public $defaultTypes = [
         'text' => \Hechoenlaravel\JarvisFoundation\Field\Text\TextFieldType::class,
         'email' => \Hechoenlaravel\JarvisFoundation\Field\Email\EmailFieldType::class,
-        'slug' => \Hechoenlaravel\JarvisFoundation\Field\Slug\SlugFieldType::class,
         'textarea' => \Hechoenlaravel\JarvisFoundation\Field\TextArea\TextAreaFieldType::class,
         'hidden' => \Hechoenlaravel\JarvisFoundation\Field\Hidden\HiddenFieldType::class,
     ];
