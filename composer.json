@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.5.9",
         "joselfonseca/laravel-tactician" : "0.2.*",
-        "joselfonseca/laravel-api-tools": "1.2.*",
+        "joselfonseca/laravel-api-tools": "1.2.13",
         "styde/html": "~1.0",
         "doctrine/dbal": "^2.6@dev"
     },
