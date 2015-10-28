@@ -28,7 +28,7 @@ class Notification extends Model{
      */
     public function scopeByUser($query, $user)
     {
-        return $query->where('user_id', $user);
+        return $query->where('user_id', $user->id);
     }
 
     /**
