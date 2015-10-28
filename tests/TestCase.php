@@ -3,6 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use Hechoenlaravel\JarvisFoundation\Tests\Stubs\UserModel;
 
 /**
  * Class TestCase
@@ -45,6 +46,16 @@ class TestCase extends Orchestra{
         $this->artisan('migrate', [
             '--database' => 'testbench',
             '--realpath' => realpath(__DIR__.'/migrations'),
+        ]);
+    }
+
+    protected function createUser()
+    {
+        UserModel::create([
+            'name' => 'test User',
+            'email' => 'someuser@example.com',
+            'password' => '123456789',
+            'uuid' => '74927348972398472398'
         ]);
     }
 

@@ -2,9 +2,9 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Tests\FieldGenerator;
 
-use Hechoenlaravel\JarvisFoundation\Exceptions\FieldTypeNotRegistered;
-use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 use Hechoenlaravel\JarvisFoundation\Tests\TestCase;
+use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
+use Hechoenlaravel\JarvisFoundation\Exceptions\FieldTypeNotRegistered;
 
 /**
  * Class TestEntityGenerator
