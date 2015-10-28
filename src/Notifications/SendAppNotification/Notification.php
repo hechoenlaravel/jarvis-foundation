@@ -40,4 +40,14 @@ class Notification extends Model{
         $query->where('readed_at');
     }
 
+    public function getTimeAgo()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    public function getLink()
+    {
+        return '#';
+    }
+
 }
