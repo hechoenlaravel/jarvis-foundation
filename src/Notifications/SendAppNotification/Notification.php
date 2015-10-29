@@ -75,7 +75,7 @@ class Notification extends Model{
     {
         if(!isset($this->types[$this->type]))
         {
-            return "";
+            return null;
         }
         return $this->types[$this->type];
     }
