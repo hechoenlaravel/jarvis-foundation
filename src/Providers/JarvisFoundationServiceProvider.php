@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class JarvisFoundationServiceProvider extends ServiceProvider{
@@ -16,6 +17,26 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
         \Styde\Html\HtmlServiceProvider::class,
         \Joselfonseca\LaravelApiTools\LaravelApiToolsServiceProvider::class,
+        \Pingpong\Menus\MenusServiceProvider::class,
+        \Hechoenlaravel\JarvisFoundation\Providers\MenuServiceProvider::class,
+        \Pingpong\Widget\WidgetServiceProvider::class,
+        \Pingpong\Modules\ModulesServiceProvider::class,
+        \Barryvdh\Debugbar\ServiceProvider::class,
+        \Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        \UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        \yajra\Datatables\DatatablesServiceProvider::class,
+        \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
+        \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
+    ];
+
+    protected $aliases = [
+        'MenuPing' => \Pingpong\Menus\MenuFacade::class,
+        'Module' => \Pingpong\Modules\Facades\Module::class,
+        'Widget' => \Pingpong\Widget\WidgetFacade::class,
+        'Debugbar' => \Barryvdh\Debugbar\Facade::class,
+        'Uuid' => \Webpatser\Uuid\Uuid::class,
+        'SweetAlert' => \UxWeb\SweetAlert\SweetAlert::class,
+        'Datatables' => \yajra\Datatables\Datatables::class,
     ];
 
     /**
@@ -38,7 +59,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
      */
     public function register()
     {
-        $this->registerOtherProviders();
+        $this->registerOtherProviders()->registerAliases();
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'jarvisPlatform');
     }
 
@@ -50,6 +71,18 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
     {
         foreach ($this->providers as $provider) {
             $this->app->register($provider);
+        }
+        return $this;
+    }
+
+    /**
+     * Register some Aliases
+     * @return $this
+     */
+    protected function registerAliases()
+    {
+        foreach ($this->aliases as $alias => $original) {
+            AliasLoader::getInstance()->alias($alias, $original);
         }
         return $this;
     }
