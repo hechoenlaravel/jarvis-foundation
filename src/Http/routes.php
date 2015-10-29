@@ -1,5 +1,11 @@
 <?php
 
+/** Notifications Routes **/
+Route::group(['middleware' => 'auth', 'prefix' => 'notifications', 'namespace' => 'Hechoenlaravel\JarvisFoundation\Http\Controllers'], function(){
+    Route::get('/', ['as' => 'notifications', 'uses' => 'NotificationsController@index']);
+    Route::get('{id}/read', ['as' => 'notifications.read', 'uses' => 'NotificationsController@read']);
+});
+
 /** Some Core Routes for API calls **/
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {

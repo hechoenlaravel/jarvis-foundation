@@ -20,6 +20,8 @@ class Notification extends Model{
      */
     protected $fillable = ['user_id', 'type', 'message', 'link', 'readed_at'];
 
+    protected $dates = ['created_at', 'updated_at', 'readed_at'];
+
     /**
      * Filter by User
      * @param $query
@@ -47,7 +49,28 @@ class Notification extends Model{
 
     public function getLink()
     {
-        return '#';
+        return route('notifications.read', ['id' => $this->id]);
+    }
+
+    public function getIconByType()
+    {
+        switch($this->type){
+            case "success":
+                return "check";
+                break;
+            case "info":
+                return "info";
+                break;
+            case "danger":
+                return "times";
+                break;
+            case "warning":
+                return "info";
+                break;
+            default:
+                return "success";
+            break;
+        }
     }
 
 }
