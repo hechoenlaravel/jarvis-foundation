@@ -20,7 +20,7 @@ trait Notificable {
      * @param object $user
      * @param $message
      * @param string $type
-     * @param null $link
+     * @param $link must be resolvable by url() helper
      */
     public function sendAppNotification($user, $message, $type = "info", $link = null)
     {

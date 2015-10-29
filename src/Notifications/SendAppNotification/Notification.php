@@ -65,7 +65,7 @@ class Notification extends Model{
                 return "times";
                 break;
             case "warning":
-                return "info";
+                return "warning";
                 break;
             default:
                 return "success";

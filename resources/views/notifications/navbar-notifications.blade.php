@@ -11,7 +11,7 @@
                     @foreach($notifications['notifications'] as $notification)
                         <li>
                             <a href="{{$notification->getLink()}}">
-                                <i class="fa fa-bell"></i> <span class="text-{{ $notification->type }}">{{$notification->message}}</span>
+                                <i class="fa fa-bell"></i> <span class="text-{{ $notification->type }}">{!! $notification->message !!}</span>
                             </a>
                         </li>
                     @endforeach
