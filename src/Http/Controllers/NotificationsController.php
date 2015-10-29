@@ -12,7 +12,7 @@ use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Events\Not
  * Class NotificationsController
  * @package Hechoenlaravel\JarvisFoundation\Http\Controllers
  */
-class NotificationsController extends controller
+class NotificationsController extends Controller
 {
 
     /**
