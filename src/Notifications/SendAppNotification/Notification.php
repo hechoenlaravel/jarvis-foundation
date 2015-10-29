@@ -20,7 +20,17 @@ class Notification extends Model{
      */
     protected $fillable = ['user_id', 'type', 'message', 'link', 'readed_at'];
 
+    /**
+     * @var array
+     */
     protected $dates = ['created_at', 'updated_at', 'readed_at'];
+
+    protected $types = [
+        'success' => 'check',
+        'info' => 'info',
+        'danger' => 'times',
+        'warning' => 'warning',
+    ];
 
     /**
      * Filter by User
@@ -42,35 +52,32 @@ class Notification extends Model{
         $query->where('readed_at');
     }
 
+    /**
+     * @return mixed
+     */
     public function getTimeAgo()
     {
         return $this->created_at->diffForHumans();
     }
 
+    /**
+     * @return string
+     */
     public function getLink()
     {
         return route('notifications.read', ['id' => $this->id]);
     }
 
+    /**
+     * @return string
+     */
     public function getIconByType()
     {
-        switch($this->type){
-            case "success":
-                return "check";
-                break;
-            case "info":
-                return "info";
-                break;
-            case "danger":
-                return "times";
-                break;
-            case "warning":
-                return "warning";
-                break;
-            default:
-                return "success";
-            break;
+        if(!isset($this->types[$this->type]))
+        {
+            return "";
         }
+        return $this->types[$this->type];
     }
 
 }
