@@ -31,4 +31,13 @@ class SidebarMenuPresenter extends NavbarPresenter
                 </ul>
             </li>';
     }
+
+    /**
+     * {@inheritdoc }.
+     */
+    public function getMenuWithoutDropdownWrapper($item)
+    {
+        return '<li'.$this->getActiveState($item).'><a href="'.$item->getUrl().'" '.$item->getAttributes().'>'.$item->getIcon().' <span>'.$item->title.'</span></a></li>'.PHP_EOL;
+    }
+
 }

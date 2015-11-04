@@ -21,18 +21,6 @@ class MenuServiceProvider extends ServiceProvider
                 $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');
             });
         }
-        if(!MenuPing::instance('navbar'))
-        {
-            MenuPing::create('navbar', function ($menu) {
-                $menu->setPresenter('Pingpong\Menus\Presenters\Bootstrap\NavbarPresenter');
-            });
-        }
-        if(!MenuPing::instance('userMenu'))
-        {
-            MenuPing::create('userMenu', function ($menu) {
-                $menu->setPresenter('Pingpong\Menus\Presenters\Bootstrap\NavbarPresenter');
-            });
-        }
         if(!MenuPing::instance('config'))
         {
             MenuPing::create('config', function ($menu) {
