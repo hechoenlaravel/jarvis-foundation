@@ -130,9 +130,7 @@ class FlowsTests extends TestCase{
             'flow' => $flow,
             'from' => $steps[0],
             'to' => $steps[1]
-        ], [
-
-        ]);
+        ], []);
         $this->seeInDatabase('fl_flows_steps_transitions', [
             'flow_id' => $flow->id,
             'step_from_id' => $steps[0]->id,

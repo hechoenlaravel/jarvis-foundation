@@ -97,7 +97,7 @@ class CreateFieldCommand
      * @param bool $create_field
      * @param string $type
      */
-    function __construct(
+    public function __construct(
         $entity_id = "",
         $namespace = "",
         $name = "",

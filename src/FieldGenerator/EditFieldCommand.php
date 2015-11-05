@@ -72,7 +72,7 @@ class EditFieldCommand {
      * @param array $options
      * @param null $default
      */
-    function __construct(
+    public function __construct(
         $id,
         $name = "",
         $description = "",

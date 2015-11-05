@@ -17,7 +17,7 @@ class ReOrderFieldCommand {
     /**
      * @param $fields
      */
-    function __construct($fields)
+    public function __construct($fields)
     {
         $this->fields = $fields;
     }
