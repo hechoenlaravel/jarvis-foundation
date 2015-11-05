@@ -32,7 +32,7 @@ class CreateFlowCommand {
      * @param $description
      * @param bool $active
      */
-    function __construct($name, $description, $active = false)
+    public function __construct($name, $description, $active = false)
     {
         $this->name = $name;
         $this->description = $description;

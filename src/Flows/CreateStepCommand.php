@@ -41,7 +41,7 @@ class CreateStepCommand {
      * @param int $order
      * @param int $isLast
      */
-    function __construct(Flow $flow, $name, $description, $order = null, $isLast = 0)
+    public function __construct(Flow $flow, $name, $description, $order = null, $isLast = 0)
     {
         $this->flow = $flow;
         $this->name = $name;

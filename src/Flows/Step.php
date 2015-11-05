@@ -16,6 +16,9 @@ class Step extends Model
      */
     public $table = "fl_flows_steps";
 
+    /**
+     * @var array
+     */
     protected $fillable = ['name', 'description', 'order', 'is_last'];
 
     /**

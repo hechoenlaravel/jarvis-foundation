@@ -17,6 +17,11 @@ class Transition extends Model
     public $table = "fl_flows_steps_transitions";
 
     /**
+     * @var array
+     */
+    public $fillable = ['flow_id', 'step_from_id', 'step_to_id'];
+
+    /**
      * The flow this transition belongs to
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
