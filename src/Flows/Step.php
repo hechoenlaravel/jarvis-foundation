@@ -16,6 +16,8 @@ class Step extends Model
      */
     public $table = "fl_flows_steps";
 
+    protected $fillable = ['name', 'description', 'order', 'is_last'];
+
     /**
      * The flow this step belongs to
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
