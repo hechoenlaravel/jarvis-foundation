@@ -19,7 +19,7 @@ class Flow extends Model{
      * the fillable columns
      * @var array
      */
-    protected $fillable = ['name', 'description', 'active'];
+    protected $fillable = ['name', 'description', 'module', 'active'];
 
     /**
      * The steps

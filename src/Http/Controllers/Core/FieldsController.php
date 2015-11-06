@@ -3,8 +3,8 @@
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
 use Illuminate\Http\Request;
-use JarvisPlatform\Http\Requests;
-use JarvisPlatform\Http\Controllers\Controller;
+use Hechoenlaravel\JarvisFoundation\Http\Requests;
+use Hechoenlaravel\JarvisFoundation\Http\Controllers\Controller;
 use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
 use Hechoenlaravel\JarvisFoundation\Traits\EntityManager;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;

@@ -132,3 +132,4 @@ JarvisPlatform.factory('fieldsService', ['$http', function ($http) {
     };
     return service;
 }]);
+

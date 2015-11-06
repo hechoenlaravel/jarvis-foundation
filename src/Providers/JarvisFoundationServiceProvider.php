@@ -12,6 +12,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
      * @var array
      */
     protected $providers = [
+        \Pingpong\Generators\GeneratorsServiceProvider::class,
         \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,

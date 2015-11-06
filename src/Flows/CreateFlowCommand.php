@@ -22,6 +22,11 @@ class CreateFlowCommand {
     public $description;
 
     /**
+     * @var
+     */
+    public $module;
+
+    /**
      * The flow state, is active or not
      * @var
      */
@@ -32,10 +37,11 @@ class CreateFlowCommand {
      * @param $description
      * @param bool $active
      */
-    public function __construct($name, $description, $active = false)
+    public function __construct($name, $description, $module = false, $active = false)
     {
         $this->name = $name;
         $this->description = $description;
+        $this->module = $module;
         $this->active = $active;
     }
 
