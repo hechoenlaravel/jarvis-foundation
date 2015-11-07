@@ -4,6 +4,8 @@ namespace Hechoenlaravel\JarvisFoundation\Traits;
 
 use Hechoenlaravel\JarvisFoundation\Flows\CreateFlowCommand;
 use Hechoenlaravel\JarvisFoundation\Flows\CreateStepCommand;
+use Hechoenlaravel\JarvisFoundation\Flows\CreateTransitionCommand;
+use Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateTransitionCommandHandler;
 use Hechoenlaravel\JarvisFoundation\Flows\Middleware\SetStepOrder;
 use Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateFlowCommandHandler;
 use Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateStepCommandHandler;
@@ -20,6 +22,11 @@ trait FlowManager {
     public function createStep(array $data)
     {
         return $this->execute(CreateStepCommand::class, CreateStepCommandHandler::class, $data,[SetStepOrder::class]);
+    }
+
+    public function createTransition(array $data)
+    {
+        return $this->execute(CreateTransitionCommand::class, CreateTransitionCommandHandler::class, $data, []);
     }
 
 }

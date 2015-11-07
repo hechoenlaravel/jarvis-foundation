@@ -18,7 +18,7 @@ class StepController extends Controller
 
     public function index(Request $request)
     {
-        $step = Step::orderBy('order', 'asc');
+        $step = Step::with('transitions')->orderBy('order', 'asc');
         if($request->has('flow_id'))
         {
             $step->where('flow_id', $request->get('flow_id'));

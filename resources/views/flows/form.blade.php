@@ -30,8 +30,16 @@
                 </div>
                 <ul class="list-group box-boby">
                     <li class="list-group-item" ng-repeat="step in steps">
+                        <div class="pull-right">
+                            <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar paso"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar paso"><i class="fa fa-trash"></i></button>
+                            <button ng-click="transitionModal(step.id)" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="top" title="Agregar transición"><i class="fa fa-plus"></i></button>
+                        </div>
                         <strong>@{{ step.name }}</strong><br />
                         <p>@{{ step.description }}</p>
+                        <span class="text-muted">Transiciones:</span><br />
+                        <span class="text-blue" ng-if="step.transitions == 0">Este paso no tiene transiciones</span>
+
                     </li>
                 </ul>
             </div>
@@ -51,6 +59,28 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button id="saveStep" type="button" class="btn btn-primary" data-loading-text="Guardando" ng-click="saveStep()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="transitionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">@{{ operationWithTransition }} transición</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>A que paso desea direccionar la transición?</label>
+                        <select class="form-control" ng-model="transitionForm.to" ng-select="transitionForm.to">
+                            <option ng-repeat="step in steps | filter: { id: '!' + transitionForm.from }" value="@{{ step.id }}">@{{ step.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button id="saveTransition" type="button" class="btn btn-primary" data-loading-text="Guardando" ng-click="saveTransition()">Guardar</button>
                 </div>
             </div>
         </div>

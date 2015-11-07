@@ -13,7 +13,8 @@ $api->version('v1', function ($api) {
         $api->resource('entity/{id}/fields', 'Core\FieldsController', ['only' => ['index', 'store', 'update', 'destroy']]);
         $api->put('entity/{id}/order-fields', 'Core\FieldsController@reOrderFieldId');
         $api->get('field-type/{type}/form', 'Core\FieldsController@fieldTypeForm');
-        $api->resource('/flow', 'Core\FlowController');
-        $api->resource('/step', 'Core\StepController');
+        $api->resource('/flows', 'Core\FlowController');
+        $api->resource('/steps', 'Core\StepController');
+        $api->resource('/transitions', 'Core\TransitionController');
     });
 });

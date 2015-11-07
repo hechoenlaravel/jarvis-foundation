@@ -2,7 +2,10 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
+use Hechoenlaravel\JarvisFoundation\Flows\Transformers\StepTransformer;
 use Illuminate\Database\Eloquent\Model;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
 
 /**
  * Class Step
@@ -37,6 +40,17 @@ class Step extends Model
     public function transitions()
     {
         return $this->hasMany(Transition::class, 'step_from_id');
+    }
+
+    /**
+     * Model Transformed
+     * @return \League\Fractal\Scope
+     */
+    public function transformed()
+    {
+        $manager = new Manager();
+        $resource = new Item($this, new StepTransformer());
+        return $manager->createData($resource);
     }
 
 }
