@@ -38,10 +38,30 @@
                         <strong>@{{ step.name }}</strong><br />
                         <p>@{{ step.description }}</p>
                         <span class="text-muted">Transiciones:</span><br />
-                        <span class="text-blue" ng-if="step.transitions == 0">Este paso no tiene transiciones</span>
-
+                        <span class="text-blue" ng-if="step.total_transitions == 0">Este paso no tiene transiciones</span>
+                        <ul class="list">
+                            <div ng-repeat="transition in step.transitions.data">
+                                <li class="list-item">
+                                    -> @{{ transition.to.data.name }} - <a ng-click="deleteTransition(transition.id)">Eliminar transición</a>
+                                </li>
+                            </div>
+                        </ul>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3>Representación gráfica del flujo</h3>
+                </div>
+                <div class="box-body">
+                    <div id="jsplump" style="position: relative">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

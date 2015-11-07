@@ -12,7 +12,7 @@ use Hechoenlaravel\JarvisFoundation\Flows\Step;
 class StepTransformer extends TransformerAbstract
 {
 
-    protected $defaultIncludes = ['transitions'];
+    protected $availableIncludes = ['transitions'];
 
     /**
      * @param Step $step
@@ -24,7 +24,7 @@ class StepTransformer extends TransformerAbstract
             'id' => (int) $step->id,
             'name' => $step->name,
             'description' => $step->description,
-            'transitions' => $step->transitions()->count()
+            'total_transitions' => $step->transitions->count()
         ];
     }
 
