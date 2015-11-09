@@ -11,7 +11,7 @@
                     @endif
                 </div>
                 <div class="box-footer">
-                    <button type="button" class="btn btn-primary" ng-click="saveFlow()">Guardar</button>
+                    <button id="saveFlowButton" type="button" class="btn btn-primary" ng-click="saveFlow()">Guardar</button>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                 <ul class="list-group box-boby">
                     <li class="list-group-item" ng-repeat="step in steps">
                         <div class="pull-right">
-                            <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar paso"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar paso"><i class="fa fa-trash"></i></button>
+                            <button ng-click="stepModal(step)" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar paso"><i class="fa fa-pencil"></i></button>
+                            <button ng-click="deleteStep(step.id)" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar paso"><i class="fa fa-trash"></i></button>
                             <button ng-click="transitionModal(step.id)" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="top" title="Agregar transición"><i class="fa fa-plus"></i></button>
                         </div>
                         <strong>@{{ step.name }}</strong><br />

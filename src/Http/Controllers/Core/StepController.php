@@ -33,4 +33,16 @@ class StepController extends Controller
         $step = $this->createStep($input);
         return $this->responseWithItem($step, new StepTransformer());
     }
+
+    public function update(Requests\StepRequest $request, $id)
+    {
+        $step = $this->updateStep(Step::findOrFail($id), $request->all());
+        return $this->responseWithItem($step, new StepTransformer());
+    }
+
+    public function destroy($id)
+    {
+        $this->deleteStep(Step::findOrFail($id));
+        return $this->responseNoContent();
+    }
 }

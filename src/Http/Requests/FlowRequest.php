@@ -5,7 +5,7 @@ namespace Hechoenlaravel\JarvisFoundation\Http\Requests;
 
 use Joselfonseca\LaravelApiTools\Http\Requests\ApiRequest;
 
-class CreateFlowRequest extends ApiRequest{
+class FlowRequest extends ApiRequest{
 
     /**
      * Determine if the user is authorized to make this request.

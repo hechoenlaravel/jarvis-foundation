@@ -3,6 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
 
+use Hechoenlaravel\JarvisFoundation\Flows\Transition;
 use Illuminate\Http\Request;
 use Hechoenlaravel\JarvisFoundation\Flows\Flow;
 use Hechoenlaravel\JarvisFoundation\Flows\Step;
@@ -25,5 +26,11 @@ class TransitionController extends Controller
             'to' => Step::find($request->get('to'))
         ]);
         return $this->responseWithItem($transition, new TransitionTransformer());
+    }
+
+    public function destroy($id)
+    {
+        $this->deleteTransition(Transition::findOrFail($id));
+        return $this->responseNoContent();
     }
 }

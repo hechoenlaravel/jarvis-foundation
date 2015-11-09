@@ -138,4 +138,114 @@ class FlowsTests extends TestCase{
         ]);
     }
 
+    /**
+     * @test
+     */
+    public function it_edits_a_flow()
+    {
+        $flow = $this->createFlow();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\EditFlowCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\EditFlowCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\EditFlowCommand', [
+            'flow' => $flow,
+            'name' => 'Tasks Flow Edit',
+            'description' => 'This is the tasks flow Edit'
+        ], []);
+        $this->seeInDatabase('fl_flows', [
+            'name' => 'Tasks Flow Edit',
+            'description' => 'This is the tasks flow Edit'
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_edits_a_step()
+    {
+        $flow = $this->createFlow();
+        $steps = $this->createSteps($flow);
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\EditStepCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\EditStepCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\EditStepCommand', [
+            'step' => $steps[0],
+            'name' => 'Step Flow 1 edit',
+            'description' => 'This is a Step in the flow 1 edit'
+        ]);
+        $this->seeInDatabase('fl_flows_steps', [
+            'name' => 'Step Flow 1 edit',
+            'description' => 'This is a Step in the flow 1 edit'
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_deletes_a_flow()
+    {
+        $flow = $this->createFlow();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\DeleteFlowCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\DeleteFlowCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteFlowCommand', [
+            'flow' => $flow,
+        ]);
+        $this->missingFromDatabase('fl_flows', [
+            'name' => 'Tasks Flow',
+            'description' => 'This is the tasks flow'
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_deletes_a_step()
+    {
+        $flow = $this->createFlow();
+        $steps = $this->createSteps($flow);
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\DeleteStepCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\DeleteStepCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteStepCommand', [
+            'step' => $steps[0],
+        ]);
+        $this->missingFromDatabase('fl_flows_steps', [
+            'name' => 'Step Flow 1',
+            'description' => 'This is a Step in the flow 1'
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_deletes_transition()
+    {
+        $flow = $this->createFlow();
+        $steps = $this->createSteps($flow);
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\CreateTransitionCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateTransitionCommandHandler');
+        $transition = $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\CreateTransitionCommand', [
+            'flow' => $flow,
+            'from' => $steps[0],
+            'to' => $steps[1]
+        ], []);
+        $this->seeInDatabase('fl_flows_steps_transitions', [
+            'flow_id' => $flow->id,
+            'step_from_id' => $steps[0]->id,
+            'step_to_id' => $steps[1]->id
+        ]);
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\Flows\DeleteTransitionCommand',
+            'Hechoenlaravel\JarvisFoundation\Flows\Handler\DeleteTransitionCommandHandler');
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteTransitionCommand', [
+            'transition' => $transition
+        ], []);
+        $this->missingFromDatabase('fl_flows_steps_transitions', [
+            'flow_id' => $flow->id,
+            'step_from_id' => $steps[0]->id,
+            'step_to_id' => $steps[1]->id
+        ]);
+    }
+
 }
