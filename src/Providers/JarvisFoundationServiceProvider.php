@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Providers;
 
+use Hechoenlaravel\JarvisFoundation\Auth\AppAuthenticationProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
@@ -51,6 +52,9 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
         $this->publishes([
             __DIR__.'/../../resources/assets' => public_path('vendor/jplatform'),
         ], 'public');
+        app('Dingo\Api\Auth\Auth')->extend('inSession', function ($app) {
+            return app('jarvis.auth.provider');
+        });
     }
 
     /**
@@ -62,6 +66,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider{
     {
         $this->registerOtherProviders()->registerAliases();
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'jarvisPlatform');
+        $this->app->bind('jarvis.auth.provider', AppAuthenticationProvider::class);
     }
 
     /**

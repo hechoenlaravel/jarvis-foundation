@@ -22,7 +22,8 @@ class FlowTransformer extends TransformerAbstract
             'name' => $flow->name,
             'description' => $flow->description,
             'created' => $flow->created_at,
-            'updated' => $flow->updated_at
+            'updated' => $flow->updated_at,
+            'active' => $flow->active
         ];
     }
 }

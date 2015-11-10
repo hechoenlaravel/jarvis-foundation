@@ -39,4 +39,23 @@ class Flow extends Model{
         return $this->hasMany(Transition::class);
     }
 
+    /**
+     * @param $query
+     * @param $module
+     * @return mixed
+     */
+    public function scopeByModule($query, $module)
+    {
+        return $query->where('module', $module);
+    }
+
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getActivePresentedAttribute($value)
+    {
+        return empty($this->active) ? "No" : "Si";
+    }
+
 }

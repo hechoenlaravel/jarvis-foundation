@@ -6,7 +6,7 @@
                 <div class="box-body">
                     {!! Field::text('name', ['label' => 'Nombre del flujo', 'ng-model' => 'flowForm.name']) !!}
                     {!! Field::textarea('description', ['label' => 'Descripción del flujo', 'ng-model' => 'flowForm.description']) !!}
-                    @if(!empty($flow->active))
+                    @if(!empty($flow))
                         {!! Field::select('active',[0 => 'No', 1 => 'Si'], $flow->active, ['label' => 'Activo', 'ng-model' => 'flowForm.active']) !!}
                     @endif
                 </div>
@@ -54,8 +54,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
-                <div class="box-header">
-                    <h3>Representación gráfica del flujo</h3>
+                <div class="box-header with-border">
+                    <h4>Representación gráfica del flujo</h4>
                 </div>
                 <div class="box-body">
                     <div id="jsplump" style="position: relative">
