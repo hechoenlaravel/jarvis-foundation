@@ -3,7 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
 
-use Javascript;
+use JavaScript;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypes;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
