@@ -11,6 +11,12 @@ use League\Fractal\TransformerAbstract;
  */
 class FlowTransformer extends TransformerAbstract
 {
+
+    /**
+     * @var array
+     */
+    protected $availableIncludes = ['steps'];
+
     /**
      * @param Flow $flow
      * @return array
@@ -25,5 +31,18 @@ class FlowTransformer extends TransformerAbstract
             'updated' => $flow->updated_at,
             'active' => $flow->active
         ];
+    }
+
+    /**
+     * @param Flow $flow
+     * @return \League\Fractal\Resource\Collection|null
+     */
+    public function includeSteps(Flow $flow)
+    {
+        if($flow->steps->count() > 0)
+        {
+            return $this->collection($flow->steps, new StepTransformer());
+        }
+        return null;
     }
 }
