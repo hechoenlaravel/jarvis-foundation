@@ -5,7 +5,7 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware;
 use League\Tactician\Middleware;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class FieldOrderSetter implements  Middleware
+class FieldOrderSetter implements Middleware
 {
     /**
      * @param object $command
