@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field;
 
-
 /**
  * Interface FieldTypeInterface
  * @package Hechoenlaravel\JarvisFoundation\Field
  */
-interface FieldTypeInterface {
-
+interface FieldTypeInterface
+{
     /**
      * Should return the type of column to be created in
      * the database laravel schema builder friendly
@@ -62,5 +61,4 @@ interface FieldTypeInterface {
      * @return mixed
      */
     public function preSaveEvent($value);
-
 }

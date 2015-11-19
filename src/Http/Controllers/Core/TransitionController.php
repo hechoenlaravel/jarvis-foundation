@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Transition;
 use Illuminate\Http\Request;
 use Hechoenlaravel\JarvisFoundation\Flows\Flow;
@@ -12,7 +11,6 @@ use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
 use Hechoenlaravel\JarvisFoundation\Traits\FlowManager;
 use Hechoenlaravel\JarvisFoundation\Http\Controllers\Controller;
 use Hechoenlaravel\JarvisFoundation\Flows\Transformers\TransitionTransformer;
-
 
 class TransitionController extends Controller
 {

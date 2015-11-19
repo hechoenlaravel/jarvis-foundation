@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
  */
 class TextAreaFieldType implements FieldTypeInterface
 {
-
     use FieldTypeImplementationTrait;
 
     /**

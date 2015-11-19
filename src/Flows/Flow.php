@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Flow
  * @package Modules\Flows\Entities
  */
-class Flow extends Model{
-
+class Flow extends Model
+{
     /**
      * @var string
      */
@@ -57,5 +57,4 @@ class Flow extends Model{
     {
         return empty($this->active) ? "No" : "Si";
     }
-
 }

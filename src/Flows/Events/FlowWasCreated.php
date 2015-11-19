@@ -10,8 +10,8 @@ use Hechoenlaravel\JarvisFoundation\Events\Event;
  * A new flow has been created
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class FlowWasCreated extends Event{
-
+class FlowWasCreated extends Event
+{
     /**
      * The flow model
      * @var
@@ -25,5 +25,4 @@ class FlowWasCreated extends Event{
     {
         $this->flow = $model;
     }
-
 }

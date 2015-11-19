@@ -11,8 +11,8 @@ use League\Fractal\Resource\Item;
  * Class FieldModel
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator
  */
-class FieldModel extends Model{
-
+class FieldModel extends Model
+{
     /**
      * database Table
      * @var string
@@ -78,5 +78,4 @@ class FieldModel extends Model{
         $resource = new Item($this, new FieldTransformer());
         return $manager->createData($resource);
     }
-
 }

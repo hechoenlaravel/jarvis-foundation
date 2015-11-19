@@ -12,7 +12,6 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  */
 class SetEntity implements Middleware
 {
-
     /**
      * Execute the Middleware
      * @param object $command

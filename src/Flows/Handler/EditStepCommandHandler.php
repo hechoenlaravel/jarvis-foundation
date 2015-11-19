@@ -8,8 +8,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Events\StepWasUpdated;
  * Class EditStepCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class EditStepCommandHandler {
-
+class EditStepCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -23,5 +23,4 @@ class EditStepCommandHandler {
         event(new StepWasUpdated($step));
         return $step;
     }
-
 }

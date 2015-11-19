@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
  * Class EntityGeneratorValidator
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware
  */
-class EntityGeneratorValidator implements Middleware{
-
+class EntityGeneratorValidator implements Middleware
+{
     /**
      * @var
      */

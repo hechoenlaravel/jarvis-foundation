@@ -6,8 +6,8 @@ use Validator;
 use League\Tactician\Middleware;
 use Hechoenlaravel\JarvisFoundation\Exceptions\FieldValidationException;
 
-class EditFieldTypeValidator implements Middleware{
-
+class EditFieldTypeValidator implements Middleware
+{
     /**
      * Rules to validate a Field
      * @var array
@@ -27,8 +27,7 @@ class EditFieldTypeValidator implements Middleware{
     public function execute($command, callable $next)
     {
         $validator = Validator::make((array) $command, $this->rules);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             throw new FieldValidationException($validator);
         }
         return $next($command);

@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class CreateStepCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class CreateStepCommand {
-
+class CreateStepCommand
+{
     /**
      * @var
      */
@@ -49,5 +48,4 @@ class CreateStepCommand {
         $this->order = $order;
         $this->isLast = $isLast;
     }
-
 }

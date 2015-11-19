@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\Flows\UI;
 use JavaScript;
 use Hechoenlaravel\JarvisFoundation\Flows\Flow;
 
-class FlowForm {
-
+class FlowForm
+{
     public $flow = null;
 
     public $module;
@@ -40,5 +40,4 @@ class FlowForm {
         ]);
         return view('jarvisPlatform::flows.form')->with('flow', $this->flow)->render();
     }
-
 }

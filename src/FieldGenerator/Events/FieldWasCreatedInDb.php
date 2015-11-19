@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Events;
 use Hechoenlaravel\JarvisFoundation\Events\Event;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class FieldWasCreatedInDb extends Event{
-
+class FieldWasCreatedInDb extends Event
+{
     /**
      * Field generated
      * @var
@@ -21,5 +21,4 @@ class FieldWasCreatedInDb extends Event{
     {
         $this->field = $model;
     }
-
 }

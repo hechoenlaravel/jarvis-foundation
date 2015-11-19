@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Notificati
  * Class NotificationWasSent
  * @package Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Events
  */
-class NotificationWasSent extends Event{
-
+class NotificationWasSent extends Event
+{
     /**
      * @var Notification
      */
@@ -23,5 +23,4 @@ class NotificationWasSent extends Event{
     {
         $this->notification = $notification;
     }
-
 }

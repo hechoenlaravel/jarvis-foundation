@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class DeleteFlowCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class DeleteFlowCommand {
-
+class DeleteFlowCommand
+{
     /**
      * @var
      */
@@ -21,5 +20,4 @@ class DeleteFlowCommand {
     {
         $this->flow = $flow;
     }
-
 }

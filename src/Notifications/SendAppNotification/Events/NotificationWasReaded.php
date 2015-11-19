@@ -7,7 +7,6 @@ use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Notificati
 
 class NotificationWasReaded extends Event
 {
-
     /**
      * @var Notification
      */
@@ -20,5 +19,4 @@ class NotificationWasReaded extends Event
     {
         $this->notification = $notification;
     }
-
 }

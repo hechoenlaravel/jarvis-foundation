@@ -3,13 +3,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class CreateTransitionCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class CreateTransitionCommand {
-
+class CreateTransitionCommand
+{
     /**
      * @var
      */
@@ -36,5 +35,4 @@ class CreateTransitionCommand {
         $this->from = $from;
         $this->to = $to;
     }
-
 }

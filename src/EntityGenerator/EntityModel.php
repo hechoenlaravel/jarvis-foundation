@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class EntityModel
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator
  */
-class EntityModel extends Model{
-
+class EntityModel extends Model
+{
     /**
      * @var string
      */
@@ -42,5 +42,4 @@ class EntityModel extends Model{
     {
         return $this->hasMany('Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel', 'entity_id');
     }
-
 }

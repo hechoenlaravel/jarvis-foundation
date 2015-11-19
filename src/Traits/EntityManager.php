@@ -2,15 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Traits;
 
-
 /**
  * Trait EntityManager
  * Use it to Manage Entities and fields in your classes
  * @author Jose Luis Fonseca <jose@ditecnologia.com>
  * @package Hechoenlaravel\JarvisFoundation\Traits
  */
-trait EntityManager {
-
+trait EntityManager
+{
     use DispatchesCommands;
 
     /**
@@ -89,5 +88,4 @@ trait EntityManager {
                 'fields' => $items
             ]);
     }
-
 }

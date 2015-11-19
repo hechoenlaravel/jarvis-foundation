@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
 
-
 /**
  * Class EditFieldGeneratorCommand
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator
  */
-class EditFieldCommand {
-
+class EditFieldCommand
+{
     /**
      * The field Id
      * @var
@@ -87,5 +86,4 @@ class EditFieldCommand {
         $this->options = $options;
         $this->default = $default;
     }
-
 }

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Transition extends Model
 {
-
     /**
      * @var string
      */
@@ -47,5 +46,4 @@ class Transition extends Model
     {
         return $this->belongsTo(Step::class, 'step_to_id');
     }
-
 }

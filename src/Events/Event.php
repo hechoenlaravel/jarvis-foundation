@@ -8,5 +8,4 @@ namespace Hechoenlaravel\JarvisFoundation\Events;
  */
 abstract class Event
 {
-
 }

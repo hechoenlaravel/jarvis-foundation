@@ -9,8 +9,8 @@ use League\Tactician\Middleware;
  * Class SetPrefixAndTableName
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware
  */
-class SetPrefixAndTableName implements Middleware{
-
+class SetPrefixAndTableName implements Middleware
+{
     /**
      * @param object $command
      * @param callable $next
@@ -32,7 +32,7 @@ class SetPrefixAndTableName implements Middleware{
      */
     protected function setPrefix($command)
     {
-        if(empty($command->prefix)){
+        if (empty($command->prefix)) {
             return $command->namespace;
         }
         return $command->prefix;

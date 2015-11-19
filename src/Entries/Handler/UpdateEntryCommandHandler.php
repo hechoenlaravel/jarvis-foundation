@@ -10,8 +10,8 @@ use Hechoenlaravel\JarvisFoundation\Entries\Events\EntryWasUpdated;
  * Class UpdateEntryCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Entries\Handler
  */
-class UpdateEntryCommandHandler {
-
+class UpdateEntryCommandHandler
+{
     /**
      * @param $command
      * @return array
@@ -26,5 +26,4 @@ class UpdateEntryCommandHandler {
             'input' => $command->input
         ];
     }
-
 }

@@ -8,8 +8,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Flow;
  * Class FlowWasUpdated
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class FlowWasUpdated {
-
+class FlowWasUpdated
+{
     /**
      * @var
      */
@@ -22,5 +22,4 @@ class FlowWasUpdated {
     {
         $this->flow = $flow;
     }
-
 }

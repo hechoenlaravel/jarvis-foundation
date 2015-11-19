@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Notification
  * @package Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification
  */
-class Notification extends Model{
-
+class Notification extends Model
+{
     /**
      * @var string
      */
@@ -73,11 +73,9 @@ class Notification extends Model{
      */
     public function getIconByType()
     {
-        if(!isset($this->types[$this->type]))
-        {
+        if (!isset($this->types[$this->type])) {
             return null;
         }
         return $this->types[$this->type];
     }
-
 }

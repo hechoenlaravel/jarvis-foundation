@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
 
-
 /**
  * Class ReOrderFieldCommand
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator
  */
-class ReOrderFieldCommand {
-
+class ReOrderFieldCommand
+{
     /**
      * @var
      */
@@ -21,5 +20,4 @@ class ReOrderFieldCommand {
     {
         $this->fields = $fields;
     }
-
 }

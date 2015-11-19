@@ -9,8 +9,8 @@ use Illuminate\Validation\Validator;
  * Class CommandValidationException
  * @package Hechoenlaravel\JarvisFoundation\Exceptions
  */
-class CommandValidationException extends Exception{
-
+class CommandValidationException extends Exception
+{
     /**
      * @var Validator
      */
@@ -32,5 +32,4 @@ class CommandValidationException extends Exception{
     {
         return $this->validator->errors();
     }
-
 }

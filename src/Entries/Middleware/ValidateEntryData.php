@@ -12,7 +12,6 @@ use League\Tactician\Middleware;
  */
 class ValidateEntryData implements Middleware
 {
-
     /**
      * @var array
      */
@@ -37,8 +36,7 @@ class ValidateEntryData implements Middleware
     protected function prepareValidation($command)
     {
         $fields = $command->entity->fields;
-        foreach($fields as $field)
-        {
+        foreach ($fields as $field) {
             $this->setRulesForField($field);
         }
         return $this;

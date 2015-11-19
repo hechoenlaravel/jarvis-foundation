@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
  */
 class HiddenFieldType implements FieldTypeInterface
 {
-
     use FieldTypeImplementationTrait;
 
     /**

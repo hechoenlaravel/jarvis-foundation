@@ -13,7 +13,6 @@ use League\Fractal\Resource\Item;
  */
 class Step extends Model
 {
-
     /**
      * @var string
      */
@@ -52,5 +51,4 @@ class Step extends Model
         $resource = new Item($this, new StepTransformer());
         return $manager->createData($resource);
     }
-
 }

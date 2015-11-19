@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field;
 
-
 /**
  * Trait FieldTypeImplementationTrait
  * @package Hechoenlaravel\JarvisFoundation\Field
  */
-trait FieldTypeImplementationTrait {
-
+trait FieldTypeImplementationTrait
+{
     /**
      * Gererate a slug based on name or other parameter
      * @param $name
@@ -25,7 +24,6 @@ trait FieldTypeImplementationTrait {
      */
     public function preAssignEvent($command)
     {
-
     }
 
     /**
@@ -37,5 +35,4 @@ trait FieldTypeImplementationTrait {
     {
         return $value;
     }
-
 }

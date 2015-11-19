@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware;
 use League\Tactician\Middleware;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class FieldOrderSetter implements  Middleware{
-
+class FieldOrderSetter implements  Middleware
+{
     /**
      * @param object $command
      * @param callable $next
@@ -15,9 +15,9 @@ class FieldOrderSetter implements  Middleware{
      */
     public function execute($command, callable $next)
     {
-        if(!is_null($command->order)){
+        if (!is_null($command->order)) {
             $this->updateCurrentFields($command);
-        }else{
+        } else {
             $command = $this->setOrder($command);
         }
         return $next($command);

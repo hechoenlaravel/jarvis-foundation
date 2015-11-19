@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class EditStepCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class EditStepCommand {
-
+class EditStepCommand
+{
     /**
      * @var
      */
@@ -29,11 +28,10 @@ class EditStepCommand {
      * @param $name
      * @param $description
      */
-    function __construct(Step $step, $name, $description)
+    public function __construct(Step $step, $name, $description)
     {
         $this->step = $step;
         $this->name = $name;
         $this->description = $description;
     }
-
 }

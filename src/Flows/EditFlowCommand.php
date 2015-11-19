@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class EditFlowCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class EditFlowCommand {
-
+class EditFlowCommand
+{
     /**
      * @var Flow
      */
@@ -35,12 +34,11 @@ class EditFlowCommand {
      * @param $description
      * @param int $active
      */
-    function __construct(Flow $flow, $name, $description, $active = 0)
+    public function __construct(Flow $flow, $name, $description, $active = 0)
     {
         $this->flow = $flow;
         $this->name = $name;
         $this->description = $description;
         $this->active = $active;
     }
-
 }

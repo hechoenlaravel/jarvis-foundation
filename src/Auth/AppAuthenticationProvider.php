@@ -12,7 +12,7 @@ class AppAuthenticationProvider implements Provider
 {
     public function authenticate(Request $request, Route $route)
     {
-        if(!Auth::check()) {
+        if (!Auth::check()) {
             throw new UnauthorizedHttpException('Unable to authenticate with supplied username and password.');
         }
     }

@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Entries;
 
-
 /**
  * Class UpdateEntryCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Entries
  */
-class UpdateEntryCommand {
-
+class UpdateEntryCommand
+{
     /**
      * The Entity
      * @var
@@ -37,5 +36,4 @@ class UpdateEntryCommand {
         $this->entry_id = $entry_id;
         $this->input = $input;
     }
-
 }

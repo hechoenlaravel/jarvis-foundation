@@ -8,8 +8,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Events\FlowWasUpdated;
  * Class EditFlowCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class EditFlowCommandHandler {
-
+class EditFlowCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -23,5 +23,4 @@ class EditFlowCommandHandler {
         event(new FlowWasUpdated($flow));
         return $flow;
     }
-
 }

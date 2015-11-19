@@ -10,8 +10,8 @@ use Hechoenlaravel\JarvisFoundation\Exceptions\FieldValidationException;
  * Class FieldGeneratorValidator
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware
  */
-class FieldGeneratorValidator implements Middleware{
-
+class FieldGeneratorValidator implements Middleware
+{
     /**
      * Rules to validate a Field
      * @var array
@@ -33,8 +33,7 @@ class FieldGeneratorValidator implements Middleware{
     public function execute($command, callable $next)
     {
         $validator = Validator::make((array) $command, $this->rules);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             throw new FieldValidationException($validator);
         }
         return $next($command);

@@ -2,15 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Events;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Step;
 
 /**
  * Class StepWasDeleted
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class StepWasDeleted {
-
+class StepWasDeleted
+{
     /**
      * @var
      */
@@ -23,5 +22,4 @@ class StepWasDeleted {
     {
         $this->step = $step;
     }
-
 }

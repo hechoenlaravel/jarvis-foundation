@@ -8,7 +8,6 @@ namespace Hechoenlaravel\JarvisFoundation\EntityGenerator;
  */
 class EntityGeneratorCommand
 {
-
     /**
      * The entity namespace
      * @string
@@ -70,5 +69,4 @@ class EntityGeneratorCommand
         $this->locked = $locked;
         $this->create_table = $create_table;
     }
-
 }

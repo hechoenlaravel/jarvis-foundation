@@ -2,15 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Events\FlowWasDeleted;
 
 /**
  * Class DeleteFlowCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class DeleteFlowCommandHandler {
-
+class DeleteFlowCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -22,5 +21,4 @@ class DeleteFlowCommandHandler {
         event(new FlowWasDeleted($flow));
         return $flow;
     }
-
 }

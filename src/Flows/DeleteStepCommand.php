@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class DeleteStepCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class DeleteStepCommand {
-
+class DeleteStepCommand
+{
     /**
      * @var
      */
@@ -21,5 +20,4 @@ class DeleteStepCommand {
     {
         $this->step = $step;
     }
-
 }

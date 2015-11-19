@@ -2,13 +2,11 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Events;
 
-
 use Hechoenlaravel\JarvisFoundation\Events\Event;
 use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Notification;
 
 class NotificationWasOpened extends Event
 {
-
     /**
      * @var Notification
      */
@@ -21,5 +19,4 @@ class NotificationWasOpened extends Event
     {
         $this->notification = $notification;
     }
-
 }

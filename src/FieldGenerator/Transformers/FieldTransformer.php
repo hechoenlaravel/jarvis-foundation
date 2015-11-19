@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers;
 use League\Fractal\TransformerAbstract;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class FieldTransformer extends TransformerAbstract{
-
+class FieldTransformer extends TransformerAbstract
+{
     public function transform(FieldModel $field)
     {
         $fieldTypes = app('field.types');
@@ -32,5 +32,4 @@ class FieldTransformer extends TransformerAbstract{
             ]
         ];
     }
-
 }

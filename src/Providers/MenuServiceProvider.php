@@ -14,17 +14,15 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!MenuPing::instance('sidebar'))
-        {
+        if (!MenuPing::instance('sidebar')) {
             MenuPing::create('sidebar', function ($menu) {
                 $menu->enableOrdering();
                 $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');
             });
         }
-        if(!MenuPing::instance('config'))
-        {
+        if (!MenuPing::instance('config')) {
             MenuPing::create('config', function ($menu) {
-                $menu->dropdown('Configuración', function($sub){
+                $menu->dropdown('Configuración', function ($sub) {
 
                 }, ['icon' => 'fa fa-cogs']);
                 $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');

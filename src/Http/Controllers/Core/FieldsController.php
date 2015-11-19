@@ -19,7 +19,6 @@ use Hechoenlaravel\JarvisFoundation\FieldGenerator\Transformers\FieldTransformer
  */
 class FieldsController extends Controller
 {
-
     use ResponderTrait, EntityManager;
 
     /**

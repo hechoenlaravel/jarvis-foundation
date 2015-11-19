@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Transition;
  * Class TransitionWasCreated
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class TransitionWasCreated extends Event{
-
+class TransitionWasCreated extends Event
+{
     /**
      * @var Transition
      */
@@ -23,5 +23,4 @@ class TransitionWasCreated extends Event{
     {
         $this->transition = $transition;
     }
-
 }

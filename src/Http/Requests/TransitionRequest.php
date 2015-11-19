@@ -4,8 +4,8 @@ namespace Hechoenlaravel\JarvisFoundation\Http\Requests;
 
 use Joselfonseca\LaravelApiTools\Http\Requests\ApiRequest;
 
-class TransitionRequest extends ApiRequest{
-
+class TransitionRequest extends ApiRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,5 +29,4 @@ class TransitionRequest extends ApiRequest{
             'to' => 'required|exists:fl_flows_steps,id'
         ];
     }
-
 }

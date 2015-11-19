@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\Flows\Transition;
  */
 class TransitionTransformer extends TransformerAbstract
 {
-
     /**
      * @param Transition $transition
      * @return array
@@ -26,5 +25,4 @@ class TransitionTransformer extends TransformerAbstract
             'updated' => $transition->updated_at
         ];
     }
-
 }

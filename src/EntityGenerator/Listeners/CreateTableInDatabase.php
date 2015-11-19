@@ -10,8 +10,8 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\Events\TableWasCreatedInDb;
  * Class CreateTableInDatabase
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Listeners
  */
-class CreateTableInDatabase {
-
+class CreateTableInDatabase
+{
     /**
      * Handle the event.
      * If the entity is supposed to create a
@@ -22,9 +22,8 @@ class CreateTableInDatabase {
      */
     public function handle(EntityWasCreated $event)
     {
-        if((bool) $event->entity->create_table)
-        {
-            Schema::create($event->entity->table_name, function($table){
+        if ((bool) $event->entity->create_table) {
+            Schema::create($event->entity->table_name, function ($table) {
                 $table->increments('id');
                 $table->timestamps();
                 $table->softDeletes();
@@ -32,5 +31,4 @@ class CreateTableInDatabase {
             event(new TableWasCreatedInDb($event->entity));
         }
     }
-
 }

@@ -11,7 +11,6 @@ use League\Fractal\TransformerAbstract;
  */
 class FlowTransformer extends TransformerAbstract
 {
-
     /**
      * @var array
      */
@@ -39,8 +38,7 @@ class FlowTransformer extends TransformerAbstract
      */
     public function includeSteps(Flow $flow)
     {
-        if($flow->steps->count() > 0)
-        {
+        if ($flow->steps->count() > 0) {
             return $this->collection($flow->steps, new StepTransformer());
         }
         return null;

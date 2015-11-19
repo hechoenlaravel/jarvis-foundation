@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  */
 class EntryWasInserted extends Event
 {
-
     /**
      * @var EntityModel
      */
@@ -38,5 +37,4 @@ class EntryWasInserted extends Event
         $this->entry = $entry;
         $this->data = $data;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
-
 use Illuminate\Http\Request;
 use Hechoenlaravel\JarvisFoundation\Flows\Flow;
 use Hechoenlaravel\JarvisFoundation\Flows\Step;
@@ -19,8 +18,7 @@ class StepController extends Controller
     public function index(Request $request)
     {
         $step = Step::with('transitions')->orderBy('order', 'asc');
-        if($request->has('flow_id'))
-        {
+        if ($request->has('flow_id')) {
             $step->where('flow_id', $request->get('flow_id'));
         }
         return $this->responseWithCollection($step, new StepTransformer());

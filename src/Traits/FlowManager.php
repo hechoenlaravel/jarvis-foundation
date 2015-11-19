@@ -23,8 +23,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateStepCommandHandler;
 use Hechoenlaravel\JarvisFoundation\Flows\Handler\CreateTransitionCommandHandler;
 use Hechoenlaravel\JarvisFoundation\Flows\Transition;
 
-trait FlowManager {
-
+trait FlowManager
+{
     use DispatchesCommands;
 
     public function createFlow(array $data)
@@ -44,7 +44,7 @@ trait FlowManager {
 
     public function createStep(array $data)
     {
-        return $this->execute(CreateStepCommand::class, CreateStepCommandHandler::class, $data,[SetStepOrder::class]);
+        return $this->execute(CreateStepCommand::class, CreateStepCommandHandler::class, $data, [SetStepOrder::class]);
     }
 
     public function updateStep(Step $step, array $data)
@@ -66,5 +66,4 @@ trait FlowManager {
     {
         return $this->execute(DeleteTransitionCommand::class, DeleteTransitionCommandHandler::class, ['transition' => $transition], []);
     }
-
 }

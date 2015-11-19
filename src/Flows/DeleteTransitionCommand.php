@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class DeleteTransitionCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class DeleteTransitionCommand {
-
+class DeleteTransitionCommand
+{
     /**
      * @var
      */
@@ -21,5 +20,4 @@ class DeleteTransitionCommand {
     {
         $this->transition = $transition;
     }
-
 }

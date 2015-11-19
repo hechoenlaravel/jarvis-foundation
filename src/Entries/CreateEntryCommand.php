@@ -2,14 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Entries;
 
-
 /**
  * Class CreateEntryCommand
  * @package Hechoenlaravel\JarvisFoundation\Entries
  */
 class CreateEntryCommand
 {
-
     /**
      * The Entity
      * @var
@@ -32,5 +30,4 @@ class CreateEntryCommand
         $this->entity = $entity;
         $this->input = $input;
     }
-
 }

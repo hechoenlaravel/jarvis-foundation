@@ -2,12 +2,11 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasEdited;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class EditFieldCommandHandler {
-
+class EditFieldCommandHandler
+{
     /**
      * Handle the creation of the Field in the Database
      * @param $command
@@ -19,7 +18,7 @@ class EditFieldCommandHandler {
         $model = FieldModel::find($command->id);
         $rename = false;
         $oldSlug = $model->slug;
-        if($model->slug !== $command->slug){
+        if ($model->slug !== $command->slug) {
             $rename = true;
         }
         unset($fields['id']);
@@ -28,5 +27,4 @@ class EditFieldCommandHandler {
         event(new FieldWasEdited($model, $rename, $oldSlug));
         return $model;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\UI\Field;
 
-
 use JavaScript;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypes;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
@@ -12,8 +11,8 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  * Class FormBuilder
  * @package Hechoenlaravel\JarvisFoundation\UI\Field
  */
-class FormBuilder {
-
+class FormBuilder
+{
     /**
      * The entity the field is being created for
      * @var EntityModel
@@ -85,7 +84,7 @@ class FormBuilder {
      */
     public function render()
     {
-        if(!$this->isEdit){
+        if (!$this->isEdit) {
             $view = view('jarvisPlatform::field.admin.fieldform')
                 ->with('entity', $this->entity)
                 ->with('returnUrl', $this->url)
@@ -112,12 +111,10 @@ class FormBuilder {
     public function getFieldTypes()
     {
         $types = [];
-        foreach($this->types->types as $type => $class)
-        {
+        foreach ($this->types->types as $type => $class) {
             $c = app($class);
             $types[$type] = $c->name;
         }
         return $types;
     }
-
 }

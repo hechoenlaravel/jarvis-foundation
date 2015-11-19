@@ -2,15 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
 /**
  * Class ReOrderFieldCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Handler
  */
-class ReOrderFieldCommandHandler {
-
+class ReOrderFieldCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -18,8 +17,7 @@ class ReOrderFieldCommandHandler {
     public function handle($command)
     {
         $order = 1;
-        foreach($command->fields as $field)
-        {
+        foreach ($command->fields as $field) {
             $f = FieldModel::find($field);
             $f->order = $order;
             $f->save();
@@ -27,5 +25,4 @@ class ReOrderFieldCommandHandler {
         }
         return $field;
     }
-
 }

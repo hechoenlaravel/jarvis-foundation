@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Events\FlowWasCreated;
  * Class CreateFlowCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class CreateFlowCommandHandler {
-
+class CreateFlowCommandHandler
+{
     /**
      * Create the flow in the database
      * @param $command
@@ -22,5 +22,4 @@ class CreateFlowCommandHandler {
         event(new FlowWasCreated($flow));
         return $flow;
     }
-
 }

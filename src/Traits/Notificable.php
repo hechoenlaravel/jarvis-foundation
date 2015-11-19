@@ -12,8 +12,8 @@ use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Handler\Se
  * @author Jose Fonseca <jose@ditecnologia.com>
  * @package Hechoenlaravel\JarvisFoundation\Traits
  */
-trait Notificable {
-
+trait Notificable
+{
     use DispatchesCommands;
 
     /**
@@ -29,9 +29,8 @@ trait Notificable {
             'type' => $type,
             'message' => $message,
             'link' => $link
-        ],[
+        ], [
             SetTheUserId::class
         ]);
     }
-
 }

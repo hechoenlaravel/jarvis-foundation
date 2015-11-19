@@ -2,15 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Events\TransitionWasDeleted;
 
 /**
  * Class DeleteTransitionCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class DeleteTransitionCommandHandler {
-
+class DeleteTransitionCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -22,5 +21,4 @@ class DeleteTransitionCommandHandler {
         event(new TransitionWasDeleted($transition));
         return $transition;
     }
-
 }

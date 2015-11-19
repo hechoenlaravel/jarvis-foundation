@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
  */
 class EmailFieldType implements FieldTypeInterface
 {
-
     use FieldTypeImplementationTrait;
 
     /**

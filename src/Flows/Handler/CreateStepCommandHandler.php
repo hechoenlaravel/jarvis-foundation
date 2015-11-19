@@ -3,11 +3,10 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Events\StepWasCreated;
 
-class CreateStepCommandHandler {
-
+class CreateStepCommandHandler
+{
     public function handle($command)
     {
         $flow = $command->flow;
@@ -16,5 +15,4 @@ class CreateStepCommandHandler {
         event(new StepWasCreated($step));
         return $step;
     }
-
 }

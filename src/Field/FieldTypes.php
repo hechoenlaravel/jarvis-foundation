@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field;
 
-
 /**
  * Class FieldTypes
  * @package Hechoenlaravel\JarvisFoundation\Field
  */
-class FieldTypes {
-
+class FieldTypes
+{
     /**
      * The field types registred
      * @var array
@@ -29,5 +28,4 @@ class FieldTypes {
     {
         return app($this->types[$type]);
     }
-
 }

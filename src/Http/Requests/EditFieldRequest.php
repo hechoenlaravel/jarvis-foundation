@@ -11,7 +11,6 @@ use Joselfonseca\LaravelApiTools\Http\Requests\ApiRequest;
  */
 class EditFieldRequest extends ApiRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -35,5 +34,4 @@ class EditFieldRequest extends ApiRequest
             'description' => 'required'
         ];
     }
-
 }

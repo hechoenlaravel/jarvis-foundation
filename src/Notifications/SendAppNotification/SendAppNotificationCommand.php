@@ -2,14 +2,13 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification;
 
-
 /**
  * Class SendAppNotificationCommand
  * Sends an In App notification to a user
  * @package Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification
  */
-class SendAppNotificationCommand {
-
+class SendAppNotificationCommand
+{
     /**
      * @var
      */
@@ -36,12 +35,11 @@ class SendAppNotificationCommand {
      * @param $message
      * @param $link
      */
-    function __construct($user, $type, $message, $link = null)
+    public function __construct($user, $type, $message, $link = null)
     {
         $this->user = $user;
         $this->type = $type;
         $this->message = $message;
         $this->link = $link;
     }
-
 }

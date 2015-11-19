@@ -8,8 +8,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Events\StepWasDeleted;
  * Class DeleteStepCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class DeleteStepCommandHandler {
-
+class DeleteStepCommandHandler
+{
     /**
      * @param $command
      * @return mixed
@@ -21,5 +21,4 @@ class DeleteStepCommandHandler {
         event(new StepWasDeleted($step));
         return $step;
     }
-
 }

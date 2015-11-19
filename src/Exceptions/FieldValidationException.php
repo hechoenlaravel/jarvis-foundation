@@ -8,8 +8,8 @@ use Illuminate\Validation\Validator;
  * Class FieldValidationException
  * @package Hechoenlaravel\JarvisFoundation\Exceptions
  */
-class FieldValidationException extends \Exception{
-
+class FieldValidationException extends \Exception
+{
     /**
      * @var Validator
      */

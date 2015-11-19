@@ -5,7 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\Flows\Middleware;
 use Hechoenlaravel\JarvisFoundation\Flows\Step;
 use League\Tactician\Middleware;
 
-class SetStepOrder implements Middleware{
+class SetStepOrder implements Middleware
+{
     /**
      * @param object $command
      * @param callable $next
@@ -14,9 +15,9 @@ class SetStepOrder implements Middleware{
      */
     public function execute($command, callable $next)
     {
-        if($command->order === null){
+        if ($command->order === null) {
             $this->setOrder($command);
-        }else{
+        } else {
             $this->reOrderSteps($command);
         }
         return $next($command);
@@ -48,5 +49,4 @@ class SetStepOrder implements Middleware{
             $command->order = $lastStep->order + 1;
         }
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners;
 
-
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasDeleted;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +12,7 @@ class deleteColumn
     {
         $field = $event->field;
         $entity = EntityModel::find($field['entity_id']);
-        Schema::table($entity->getTableName(), function($table) use($field){
+        Schema::table($entity->getTableName(), function ($table) use ($field) {
             $table->dropColumn($field['slug']);
         });
     }

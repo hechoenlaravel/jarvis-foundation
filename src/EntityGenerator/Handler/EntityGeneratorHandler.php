@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\Events\EntityWasCreated;
 
@@ -10,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\Events\EntityWasCreated;
  * Class EntityGeneratorHandler
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler
  */
-class EntityGeneratorHandler {
-
+class EntityGeneratorHandler
+{
     /**
      * Creates the Entity Record
      * @param $command
@@ -23,5 +22,4 @@ class EntityGeneratorHandler {
         event(new EntityWasCreated($entity));
         return $entity;
     }
-
 }

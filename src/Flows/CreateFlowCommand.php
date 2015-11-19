@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows;
 
-
 /**
  * Class CreateFlowCommand
  * @package Hechoenlaravel\JarvisFoundation\Flows
  */
-class CreateFlowCommand {
-
+class CreateFlowCommand
+{
     /**
      * The flow name
      * @var
@@ -44,5 +43,4 @@ class CreateFlowCommand {
         $this->module = $module;
         $this->active = $active;
     }
-
 }

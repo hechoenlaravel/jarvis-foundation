@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\EntityGenerator\Events;
 use Hechoenlaravel\JarvisFoundation\Events\Event;
 use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 
-class TableWasCreatedInDb extends Event{
-
+class TableWasCreatedInDb extends Event
+{
     /**
      * Entity generated
      * @var
@@ -20,5 +20,4 @@ class TableWasCreatedInDb extends Event{
     {
         $this->entity = $model;
     }
-
 }

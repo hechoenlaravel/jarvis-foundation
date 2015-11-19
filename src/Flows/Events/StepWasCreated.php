@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\Events\Event;
  * Class StepWasCreated
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class StepWasCreated extends Event{
-
+class StepWasCreated extends Event
+{
     /**
      * The Step model
      * @var
@@ -24,5 +24,4 @@ class StepWasCreated extends Event{
     {
         $this->step = $model;
     }
-
 }

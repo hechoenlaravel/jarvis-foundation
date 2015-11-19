@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Handler;
 
-
 use Hechoenlaravel\JarvisFoundation\Flows\Transition;
 use Hechoenlaravel\JarvisFoundation\Flows\Events\TransitionWasCreated;
 
@@ -10,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Events\TransitionWasCreated;
  * Class CreateTransitionCommandHandler
  * @package Hechoenlaravel\JarvisFoundation\Flows\Handler
  */
-class CreateTransitionCommandHandler {
-
+class CreateTransitionCommandHandler
+{
     /**
      * @param $command
      * @return static
@@ -27,5 +26,4 @@ class CreateTransitionCommandHandler {
         event(new TransitionWasCreated($transition));
         return $transition;
     }
-
 }

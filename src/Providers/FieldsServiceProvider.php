@@ -8,8 +8,8 @@ use Illuminate\Support\ServiceProvider;
  * Class FieldsServiceProvider
  * @package Hechoenlaravel\JarvisFoundation\Providers
  */
-class FieldsServiceProvider extends ServiceProvider{
-
+class FieldsServiceProvider extends ServiceProvider
+{
     /**
      * The system Field types
      * @var array
@@ -38,8 +38,7 @@ class FieldsServiceProvider extends ServiceProvider{
     public function setDefaultTypes()
     {
         $types = $this->app->make('field.types');
-        foreach($this->defaultTypes as $alias => $fieldType)
-        {
+        foreach ($this->defaultTypes as $alias => $fieldType) {
             $types->addFieldType([
                 'type' => $alias,
                 'class' => $fieldType

@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
  * Class FieldWasEdited
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Events
  */
-class FieldWasEdited extends Event{
-
+class FieldWasEdited extends Event
+{
     /**
      * Field generated
      * @var
@@ -37,5 +37,4 @@ class FieldWasEdited extends Event{
         $this->rename = $rename;
         $this->oldSlug = $oldSlug;
     }
-
 }

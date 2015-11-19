@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  * Class EntityWasCreated
  * @package Hechoenlaravel\JarvisFoundation\EntityGenerator\Events
  */
-class EntityWasCreated extends Event{
-
+class EntityWasCreated extends Event
+{
     /**
      * Entity generated
      * @var
@@ -24,5 +24,4 @@ class EntityWasCreated extends Event{
     {
         $this->entity = $model;
     }
-
 }

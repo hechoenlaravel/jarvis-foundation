@@ -14,8 +14,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Transformers\FlowTransformer;
  * Class FlowController
  * @package Hechoenlaravel\JarvisFoundation\Http\Controllers\Core
  */
-class FlowController extends Controller{
-
+class FlowController extends Controller
+{
     use ResponderTrait, FlowManager;
 
 
@@ -49,5 +49,4 @@ class FlowController extends Controller{
         $this->deleteFlow(Flow::findOrFail($id));
         return $this->responseNoContent();
     }
-
 }

@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
  * Class EntityWasCreated
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Events
  */
-class FieldWasCreated extends Event{
-
+class FieldWasCreated extends Event
+{
     /**
      * Field generated
      * @var
@@ -25,5 +25,4 @@ class FieldWasCreated extends Event{
     {
         $this->field = $model;
     }
-
 }

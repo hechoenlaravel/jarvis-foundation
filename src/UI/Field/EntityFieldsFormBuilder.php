@@ -12,7 +12,6 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  */
 class EntityFieldsFormBuilder
 {
-
     /**
      * @var EntityModel
      */
@@ -46,8 +45,7 @@ class EntityFieldsFormBuilder
     public function setRowId($id)
     {
         $this->entry = DB::table($this->entity->getTableName())->where('id', $id)->first();
-        foreach($this->types as $field)
-        {
+        foreach ($this->types as $field) {
             $field->setValue($this->entry->{$field->fieldSlug});
         }
     }
@@ -78,5 +76,4 @@ class EntityFieldsFormBuilder
 
         return $this;
     }
-
 }

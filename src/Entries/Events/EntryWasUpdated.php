@@ -9,8 +9,8 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
  * Class EntryWasUpdated
  * @package Hechoenlaravel\JarvisFoundation\Entries\Events
  */
-class EntryWasUpdated extends Event{
-
+class EntryWasUpdated extends Event
+{
     /**
      * @var EntityModel
      */
@@ -37,5 +37,4 @@ class EntryWasUpdated extends Event{
         $this->entry_id = $entry_id;
         $this->data = $data;
     }
-
 }

@@ -5,8 +5,8 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware;
 use League\Tactician\Middleware;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\FieldModel;
 
-class SetFieldTypeOnEdit implements Middleware{
-
+class SetFieldTypeOnEdit implements Middleware
+{
     /**
      * @param object $command
      * @param callable $next

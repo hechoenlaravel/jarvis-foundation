@@ -8,8 +8,8 @@ use Hechoenlaravel\JarvisFoundation\Flows\Step;
  * Class StepWasUpdate
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class StepWasUpdated {
-
+class StepWasUpdated
+{
     /**
      * @var
      */
@@ -22,5 +22,4 @@ class StepWasUpdated {
     {
         $this->step = $step;
     }
-
 }

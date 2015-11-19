@@ -7,7 +7,6 @@ use Illuminate\Validation\Validator;
 
 class EntryValidationException extends Exception
 {
-
     /**
      * @var Validator
      */
@@ -29,5 +28,4 @@ class EntryValidationException extends Exception
     {
         return $this->validator->errors();
     }
-
 }

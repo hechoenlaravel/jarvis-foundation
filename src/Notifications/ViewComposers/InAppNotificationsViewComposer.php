@@ -6,8 +6,8 @@ use Auth;
 use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Notification;
 use Illuminate\Contracts\View\View;
 
-class InAppNotificationsViewComposer {
-
+class InAppNotificationsViewComposer
+{
     /**
      * Bind data to the view.
      *
@@ -16,7 +16,7 @@ class InAppNotificationsViewComposer {
      */
     public function compose(View $view)
     {
-        if(!Auth::guest()){
+        if (!Auth::guest()) {
             $n = Notification::byUser(Auth::user())->unread()->get();
             $view->with('notifications', [
                 'count' => $n->count(),
@@ -24,5 +24,4 @@ class InAppNotificationsViewComposer {
             ]);
         }
     }
-
 }

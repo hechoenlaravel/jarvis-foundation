@@ -12,7 +12,6 @@ use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
  */
 class TextFieldType implements FieldTypeInterface
 {
-
     use FieldTypeImplementationTrait;
 
     /**

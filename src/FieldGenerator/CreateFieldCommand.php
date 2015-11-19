@@ -8,7 +8,6 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
  */
 class CreateFieldCommand
 {
-
     /**
      * The entity related to the field
      * @var
@@ -126,5 +125,4 @@ class CreateFieldCommand
         $this->hidden = $hidden;
         $this->order = $order;
     }
-
 }

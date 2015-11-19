@@ -11,7 +11,6 @@ use Hechoenlaravel\JarvisFoundation\Flows\Step;
  */
 class StepTransformer extends TransformerAbstract
 {
-
     protected $availableIncludes = ['transitions'];
 
     /**
@@ -30,8 +29,7 @@ class StepTransformer extends TransformerAbstract
 
     public function includeTransitions(Step $step)
     {
-        if($step->transitions()->count() === 0)
-        {
+        if ($step->transitions()->count() === 0) {
             return null;
         }
         $collection = $this->collection($step->transitions, new TransitionTransformer);

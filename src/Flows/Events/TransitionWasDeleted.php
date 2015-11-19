@@ -2,13 +2,12 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Flows\Events;
 
-
 /**
  * Class TransitionWasDeleted
  * @package Hechoenlaravel\JarvisFoundation\Flows\Events
  */
-class TransitionWasDeleted {
-
+class TransitionWasDeleted
+{
     /**
      * @var
      */
@@ -21,5 +20,4 @@ class TransitionWasDeleted {
     {
         $this->transition = $transition;
     }
-
 }

@@ -10,9 +10,8 @@ use League\Tactician\Middleware;
  * @author Jose Luis Fonseca <jose@ditecnologia.com>
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware
  */
-class FieldOptionsSerializer implements Middleware{
-
-
+class FieldOptionsSerializer implements Middleware
+{
     /**
      * @param object $command
      * @param callable $next

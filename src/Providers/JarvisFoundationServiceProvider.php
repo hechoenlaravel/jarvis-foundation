@@ -6,8 +6,8 @@ use Hechoenlaravel\JarvisFoundation\Auth\AppAuthenticationProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
-class JarvisFoundationServiceProvider extends ServiceProvider{
-
+class JarvisFoundationServiceProvider extends ServiceProvider
+{
     /**
      * Service providers to load
      * @var array

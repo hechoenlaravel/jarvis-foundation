@@ -2,7 +2,6 @@
 
 namespace Hechoenlaravel\JarvisFoundation\FieldGenerator;
 
-
 /**
  * Class DeleteFieldCommand
  * @package Hechoenlaravel\JarvisFoundation\FieldGenerator

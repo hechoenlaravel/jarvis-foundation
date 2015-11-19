@@ -10,7 +10,6 @@ namespace Hechoenlaravel\JarvisFoundation\Traits;
  */
 trait EntryManager
 {
-
     use DispatchesCommands;
 
     /**
@@ -46,5 +45,4 @@ trait EntryManager
                 'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
             ]);
     }
-
 }

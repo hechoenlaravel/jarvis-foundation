@@ -14,7 +14,6 @@ use Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Events\Not
  */
 class NotificationsController extends Controller
 {
-
     /**
      * Lists notifications
      * @return $this
@@ -33,21 +32,18 @@ class NotificationsController extends Controller
     public function read($id)
     {
         $notification = Notification::findOrFail($id);
-        if($notification->user_id != Auth::user()->id)
-        {
+        if ($notification->user_id != Auth::user()->id) {
             abort(403);
         }
-        if(empty($notification->readed_at)){
+        if (empty($notification->readed_at)) {
             $notification->readed_at = Carbon::now();
             $notification->save();
             event(new NotificationWasReaded($notification));
         }
         event(new NotificationWasOpened($notification));
-        if(!empty($notification->link))
-        {
+        if (!empty($notification->link)) {
             return redirect()->to($notification->link);
         }
         return redirect()->route('notifications');
     }
-
 }

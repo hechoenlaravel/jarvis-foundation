@@ -4,8 +4,8 @@ namespace Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware;
 
 use League\Tactician\Middleware;
 
-class CallPreAssignEventOnField implements Middleware{
-
+class CallPreAssignEventOnField implements Middleware
+{
     /**
      * @param object $command
      * @param callable $next
