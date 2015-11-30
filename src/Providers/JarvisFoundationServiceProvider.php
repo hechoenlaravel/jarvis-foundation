@@ -24,11 +24,13 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \Pingpong\Widget\WidgetServiceProvider::class,
         \Pingpong\Modules\ModulesServiceProvider::class,
         \Barryvdh\Debugbar\ServiceProvider::class,
+        \Baum\Providers\BaumServiceProvider::class,
         \Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         \UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         \yajra\Datatables\DatatablesServiceProvider::class,
         \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
+
     ];
 
     protected $aliases = [
