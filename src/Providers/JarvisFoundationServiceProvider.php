@@ -31,6 +31,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \yajra\Datatables\DatatablesServiceProvider::class,
         \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
+        \GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class
 
     ];
 

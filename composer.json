@@ -31,7 +31,8 @@
         "uxweb/sweet-alert": "~1.1",
         "yajra/laravel-datatables-oracle": "~5.0",
         "baum/baum": "~1.1",
-        "cviebrock/eloquent-sluggable" : "3.1.*"
+        "cviebrock/eloquent-sluggable" : "3.1.*",
+        "graham-campbell/htmlmin": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.0",
