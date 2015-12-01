@@ -8,8 +8,15 @@
             "email": "jose@ditecnologia.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/hechoenlaravel/composer-plugin"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
+        "hechoenlaravel/composer-plugin": "dev-master",
         "pingpong/sky": "~2.1",
         "pingpong/modules": "~2.1",
         "pingpong/menus": "~2.1",
