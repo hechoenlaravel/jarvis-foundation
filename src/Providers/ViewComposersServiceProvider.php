@@ -14,7 +14,7 @@ class ViewComposersServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('partials.nav', InAppNotificationsViewComposer::class);
+        view()->composer('jplatformui::partials.nav', InAppNotificationsViewComposer::class);
     }
 
     /**
