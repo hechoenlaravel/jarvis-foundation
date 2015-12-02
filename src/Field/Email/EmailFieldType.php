@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field\Email;
 
+use Field;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
 
@@ -73,5 +74,13 @@ class EmailFieldType implements FieldTypeInterface
     public function getOptionsForm()
     {
         return view('jarvisPlatform::field.types.email.optionsForm')->render();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function presentFront()
+    {
+        return $this->value;
     }
 }

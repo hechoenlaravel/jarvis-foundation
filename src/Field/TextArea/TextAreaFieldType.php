@@ -74,4 +74,12 @@ class TextAreaFieldType implements FieldTypeInterface
     {
         return view('jarvisPlatform::field.types.textarea.optionsForm')->render();
     }
+
+    /**
+     * @return mixed
+     */
+    public function presentFront()
+    {
+        return $this->value;
+    }
 }

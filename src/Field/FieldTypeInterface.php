@@ -61,4 +61,10 @@ interface FieldTypeInterface
      * @return mixed
      */
     public function preSaveEvent($value);
+
+    /**
+     * Present the value for front
+     * @return mixed
+     */
+    public function presentFront();
 }

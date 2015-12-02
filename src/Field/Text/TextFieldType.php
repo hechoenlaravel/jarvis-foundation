@@ -115,4 +115,12 @@ class TextFieldType implements FieldTypeInterface
     {
         return strtolower($value);
     }
+
+    /**
+     * @return mixed
+     */
+    public function presentFront()
+    {
+        return ucfirst($this->value);
+    }
 }

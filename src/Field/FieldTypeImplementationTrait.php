@@ -35,4 +35,14 @@ trait FieldTypeImplementationTrait
     {
         return $value;
     }
+
+    /**
+     * By default it returns the raw value
+     * @return mixed
+     */
+    public function presentFront()
+    {
+        return $this->value;
+
+    }
 }
