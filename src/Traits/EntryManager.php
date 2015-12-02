@@ -24,6 +24,7 @@ trait EntryManager
             'Hechoenlaravel\JarvisFoundation\Entries\Handler\CreateEntryCommandHandler', $input, [
                 'Hechoenlaravel\JarvisFoundation\Entries\Middleware\SetEntity',
                 'Hechoenlaravel\JarvisFoundation\Entries\Middleware\ValidateEntryData',
+                'Hechoenlaravel\JarvisFoundation\Entries\Middleware\FilterFieldFromInput',
                 'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
             ]);
     }
