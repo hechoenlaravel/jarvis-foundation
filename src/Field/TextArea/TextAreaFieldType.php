@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Field\TextArea;
 
+use Field;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeInterface;
 use Hechoenlaravel\JarvisFoundation\Field\FieldTypeImplementationTrait;
 
