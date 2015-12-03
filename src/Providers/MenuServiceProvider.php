@@ -28,6 +28,11 @@ class MenuServiceProvider extends ServiceProvider
                 $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');
             });
         }
+        if (!MenuPing::instance('topnav')) {
+            MenuPing::create('topnav', function ($menu) {
+                $menu->enableOrdering();
+            });
+        }
     }
 
     /**
