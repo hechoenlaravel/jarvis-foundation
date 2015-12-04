@@ -23,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\RenameColumn'
         ],
         'Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasDeleted' => [
-            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\deleteColumn'
+            'Hechoenlaravel\JarvisFoundation\FieldGenerator\Listeners\DeleteColumn'
         ]
     ];
 

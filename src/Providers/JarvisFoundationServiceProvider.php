@@ -30,7 +30,8 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         \yajra\Datatables\DatatablesServiceProvider::class,
         \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
-        \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class
+        \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
+        \Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ];
 

@@ -6,7 +6,7 @@ use Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityModel;
 use Hechoenlaravel\JarvisFoundation\FieldGenerator\Events\FieldWasDeleted;
 use Illuminate\Support\Facades\Schema;
 
-class deleteColumn
+class DeleteColumn
 {
     public function handle(FieldWasDeleted $event)
     {
