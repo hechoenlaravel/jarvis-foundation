@@ -32,6 +32,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
         \Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \Maatwebsite\Excel\ExcelServiceProvider::class
 
     ];
 
@@ -43,6 +44,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         'Uuid' => \Webpatser\Uuid\Uuid::class,
         'SweetAlert' => \UxWeb\SweetAlert\SweetAlert::class,
         'Datatables' => \yajra\Datatables\Datatables::class,
+        'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
     ];
 
     /**
