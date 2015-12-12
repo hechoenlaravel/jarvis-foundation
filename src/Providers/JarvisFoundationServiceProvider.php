@@ -53,7 +53,6 @@ class JarvisFoundationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutes();
         $this->publishes([
             __DIR__.'/../../resources/assets' => public_path('vendor/jplatform'),
         ], 'public');
@@ -72,6 +71,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         $this->registerOtherProviders()->registerAliases();
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'jarvisPlatform');
         $this->app->bind('jarvis.auth.provider', AppAuthenticationProvider::class);
+        $this->loadRoutes();
     }
 
     /**

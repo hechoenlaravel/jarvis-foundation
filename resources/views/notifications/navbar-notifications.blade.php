@@ -17,7 +17,7 @@
                     @endforeach
                 </ul>
             <li>
-            <li class="footer"><a href="{{route('notifications')}}">Ver Todas</a></li>
+            <li class="footer"><a href="{{url('notifications')}}">Ver Todas</a></li>
         </ul>
     </li>
 @endif

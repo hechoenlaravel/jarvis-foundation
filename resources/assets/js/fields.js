@@ -88,10 +88,9 @@ JarvisPlatform.factory('fieldsService', ['$http', function ($http) {
                     animation: 150,
                     onSort: function (evt){
                         $models = [];
-                        for(x in evt.models)
-                        {
+                        $(evt.models).each(function(x){
                             $models.push(evt.models[x].id);
-                        }
+                        });
                         service.reOrderFields($models);
                     }
                 };

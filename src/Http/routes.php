@@ -1,9 +1,9 @@
 <?php
 
 /** Notifications Routes **/
-Route::group(['middleware' => 'auth', 'prefix' => 'notifications', 'namespace' => 'Hechoenlaravel\JarvisFoundation\Http\Controllers'], function () {
-    Route::get('/', ['as' => 'notifications', 'uses' => 'NotificationsController@index']);
-    Route::get('{id}/read', ['as' => 'notifications.read', 'uses' => 'NotificationsController@read']);
+Route::group(['middleware' => 'auth', 'namespace' => 'Hechoenlaravel\JarvisFoundation\Http\Controllers'], function () {
+    Route::get('notifications', ['as' => 'notifications.index', 'uses' => 'NotificationsController@index']);
+    Route::get('notifications/{id}/read', ['as' => 'notifications.read', 'uses' => 'NotificationsController@read']);
 });
 
 /** Some Core Routes for API calls **/
