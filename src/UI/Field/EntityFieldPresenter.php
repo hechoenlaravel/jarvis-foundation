@@ -47,9 +47,9 @@ class EntityFieldPresenter
     /**
      * @param $id
      */
-    public function setRowId($id)
+    public function setRowId($id, $column = 'id')
     {
-        $this->entry = DB::table($this->entity->getTableName())->where('id', $id)->first();
+        $this->entry = DB::table($this->entity->getTableName())->where($column, $id)->first();
         foreach ($this->types as $field) {
             $field->setValue($this->entry->{$field->fieldSlug});
         }
