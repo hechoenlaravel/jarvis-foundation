@@ -24,9 +24,6 @@ class FieldTransformer extends TransformerAbstract
             'order' => $field->order,
             'default' => $field->default,
             'required' => (string)$field->required,
-            'links' => [
-                'edit' => route($field->entity->slug.'.config.edit', ['id' => $field->id])
-            ],
             'fieldType' => [
                 'name' => $type->name
             ]
