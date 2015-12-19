@@ -2,9 +2,9 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Entries\Middleware;
 
-use Hechoenlaravel\JarvisFoundation\Exceptions\EntryValidationException;
-use Illuminate\Support\Facades\Validator;
 use League\Tactician\Middleware;
+use Illuminate\Support\Facades\Validator;
+use Hechoenlaravel\JarvisFoundation\Exceptions\EntryValidationException;
 
 /**
  * Class ValidateEntryData
