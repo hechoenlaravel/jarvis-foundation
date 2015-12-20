@@ -12,10 +12,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/hechoenlaravel/composer-plugin"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/joselfonseca/api"
         }
     ],
     "require": {

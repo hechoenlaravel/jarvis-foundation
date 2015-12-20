@@ -15,5 +15,6 @@ class AppAuthenticationProvider implements Provider
         if (!Auth::check()) {
             throw new UnauthorizedHttpException('Unable to authenticate with supplied username and password.');
         }
+        return Auth::user();
     }
 }
