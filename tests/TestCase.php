@@ -17,7 +17,14 @@ class TestCase extends Orchestra{
      */
     protected function getPackageProviders($app)
     {
-        return ['Hechoenlaravel\JarvisFoundation\Providers\JarvisFoundationServiceProvider'];
+        // This is a HORRIBLE HACK while Dingo API accepts a PR
+        // please check https://github.com/dingo/api/pull/776
+        $api = require __DIR__.'/../vendor/dingo/api/config/api.php';
+        $app['config']['api'] = $api;
+        return [
+            'Dingo\Api\Provider\LaravelServiceProvider',
+            'Hechoenlaravel\JarvisFoundation\Providers\JarvisFoundationServiceProvider'
+        ];
     }
 
     /**

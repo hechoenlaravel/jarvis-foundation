@@ -2,24 +2,25 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Providers;
 
-use Hechoenlaravel\JarvisFoundation\Auth\AppAuthenticationProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Hechoenlaravel\JarvisFoundation\Auth\AppAuthenticationProvider;
 
 class JarvisFoundationServiceProvider extends ServiceProvider
 {
+
     /**
      * Service providers to load
      * @var array
      */
     protected $providers = [
+        \Joselfonseca\LaravelApiTools\LaravelApiToolsServiceProvider::class,
         \Pingpong\Generators\GeneratorsServiceProvider::class,
         \Hechoenlaravel\JarvisPlatformUi\Providers\JarvisPlatformUiServiceProvider::class,
         \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
         \Styde\Html\HtmlServiceProvider::class,
-        \Joselfonseca\LaravelApiTools\LaravelApiToolsServiceProvider::class,
         \Pingpong\Menus\MenusServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\MenuServiceProvider::class,
         \Pingpong\Widget\WidgetServiceProvider::class,
