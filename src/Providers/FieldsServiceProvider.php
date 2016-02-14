@@ -18,7 +18,8 @@ class FieldsServiceProvider extends ServiceProvider
         'text' => \Hechoenlaravel\JarvisFoundation\Field\Text\TextFieldType::class,
         'email' => \Hechoenlaravel\JarvisFoundation\Field\Email\EmailFieldType::class,
         'textarea' => \Hechoenlaravel\JarvisFoundation\Field\TextArea\TextAreaFieldType::class,
-        'date' => \Hechoenlaravel\JarvisFoundation\Field\Date\DateFieldType::class
+        'date' => \Hechoenlaravel\JarvisFoundation\Field\Date\DateFieldType::class,
+        'select' => \Hechoenlaravel\JarvisFoundation\Field\Select\SelectFieldType::class
     ];
 
     /**
