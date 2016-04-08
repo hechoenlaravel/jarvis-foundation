@@ -32,7 +32,8 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \yajra\Datatables\DatatablesServiceProvider::class,
         \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
-        \Maatwebsite\Excel\ExcelServiceProvider::class
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
+        \Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ];
 
