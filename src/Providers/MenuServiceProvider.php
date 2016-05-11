@@ -20,14 +20,6 @@ class MenuServiceProvider extends ServiceProvider
                 $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');
             });
         }
-        if (!MenuPing::instance('config')) {
-            MenuPing::create('config', function ($menu) {
-                $menu->dropdown('Configuración', function ($sub) {
-
-                }, ['icon' => 'fa fa-cogs']);
-                $menu->setPresenter('Hechoenlaravel\JarvisFoundation\Menu\Presenters\SidebarMenuPresenter');
-            });
-        }
         if (!MenuPing::instance('topnav')) {
             MenuPing::create('topnav', function ($menu) {
                 $menu->enableOrdering();
