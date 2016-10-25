@@ -121,6 +121,26 @@ class TextFieldType implements FieldTypeInterface
      */
     public function presentFront()
     {
-        return ucfirst($this->value);
+        $options = unserialize($this->fieldOptions);
+        if(isset($options['transform'])){
+            return $this->transformText($options['transform']);
+        }
+        return strtoupper($this->value);
+    }
+
+    /**
+     * @param $transformation
+     * @return string
+     */
+    protected function transformText($transformation)
+    {
+        switch ($transformation){
+            case "1":
+                return strtoupper($this->value);
+            case "2":
+                return strtolower($this->value);
+            default:
+                return $this->value;
+        }
     }
 }
