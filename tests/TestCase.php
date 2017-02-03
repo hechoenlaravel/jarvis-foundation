@@ -9,7 +9,7 @@ use Hechoenlaravel\JarvisFoundation\Tests\Stubs\UserModel;
  * Class TestCase
  * @package Hechoenlaravel\Foundation\Tests
  */
-class TestCase extends Orchestra{
+abstract class TestCase extends Orchestra {
 
     /**
      * @param \Illuminate\Foundation\Application $app
@@ -17,13 +17,9 @@ class TestCase extends Orchestra{
      */
     protected function getPackageProviders($app)
     {
-        // This is a HORRIBLE HACK while Dingo API accepts a PR
-        // please check https://github.com/dingo/api/pull/776
-        $api = require __DIR__.'/../vendor/dingo/api/config/api.php';
-        $app['config']['api'] = $api;
         return [
-            'Dingo\Api\Provider\LaravelServiceProvider',
-            'Hechoenlaravel\JarvisFoundation\Providers\JarvisFoundationServiceProvider'
+            \Hechoenlaravel\JarvisFoundation\Providers\JarvisFoundationServiceProvider::class,
+            ServiceProvider::class
         ];
     }
 
@@ -42,7 +38,6 @@ class TestCase extends Orchestra{
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-        $app['config']->set('jwt.user', 'Hechoenlaravel\JarvisFoundation\Tests\Stubs\UserModel');
     }
 
     /**
@@ -50,10 +45,7 @@ class TestCase extends Orchestra{
      */
     protected function migrateDatabase()
     {
-        $this->artisan('migrate', [
-            '--database' => 'testbench',
-            '--realpath' => realpath(__DIR__.'/migrations'),
-        ]);
+        $this->artisan('migrate', ['--database' => 'testbench']);
     }
 
     protected function createUser()

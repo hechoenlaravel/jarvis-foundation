@@ -28,7 +28,7 @@ class TestNotifications extends TestCase
             [
                 'Hechoenlaravel\JarvisFoundation\Notifications\SendAppNotification\Middleware\SetTheUserId'
             ]);
-        $this->seeInDatabase('app_notifications', [
+        $this->assertDatabaseHas('app_notifications', [
             'user_id' => $user->id,
             'type' => 'success',
             'message' => 'Some Message'

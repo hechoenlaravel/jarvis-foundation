@@ -44,7 +44,7 @@ class FlowsTests extends TestCase{
     public function it_can_create_a_flow()
     {
         $this->createFlow();
-        $this->seeInDatabase('fl_flows', [
+        $this->assertDatabaseHas('fl_flows', [
             'name' => 'Tasks Flow',
             'description' => 'This is the tasks flow'
         ]);
@@ -66,7 +66,7 @@ class FlowsTests extends TestCase{
         ], [
             'Hechoenlaravel\JarvisFoundation\Flows\Middleware\SetStepOrder'
         ]);
-        $this->seeInDatabase('fl_flows_steps', [
+        $this->assertDatabaseHas('fl_flows_steps', [
             'flow_id' => $flow->id,
             'name' => 'Step Flow',
             'description' => 'This is a Step in the flow',
@@ -93,21 +93,21 @@ class FlowsTests extends TestCase{
         ], [
             'Hechoenlaravel\JarvisFoundation\Flows\Middleware\SetStepOrder'
         ]);
-        $this->seeInDatabase('fl_flows_steps', [
+        $this->assertDatabaseHas('fl_flows_steps', [
             'flow_id' => $flow->id,
             'name' => 'Step Flow reorder',
             'description' => 'This is a Step in the flow',
             'order' => 3,
             'is_last' => 0
         ]);
-        $this->seeInDatabase('fl_flows_steps', [
+        $this->assertDatabaseHas('fl_flows_steps', [
             'flow_id' => $flow->id,
             'name' => 'Step Flow 3',
             'description' => 'This is a Step in the flow 3',
             'order' => 4,
             'is_last' => 0
         ]);
-        $this->seeInDatabase('fl_flows_steps', [
+        $this->assertDatabaseHas('fl_flows_steps', [
             'flow_id' => $flow->id,
             'name' => 'Step Flow 4',
             'description' => 'This is a Step in the flow 4',
@@ -131,7 +131,7 @@ class FlowsTests extends TestCase{
             'from' => $steps[0],
             'to' => $steps[1]
         ], []);
-        $this->seeInDatabase('fl_flows_steps_transitions', [
+        $this->assertDatabaseHas('fl_flows_steps_transitions', [
             'flow_id' => $flow->id,
             'step_from_id' => $steps[0]->id,
             'step_to_id' => $steps[1]->id
@@ -152,7 +152,7 @@ class FlowsTests extends TestCase{
             'name' => 'Tasks Flow Edit',
             'description' => 'This is the tasks flow Edit'
         ], []);
-        $this->seeInDatabase('fl_flows', [
+        $this->assertDatabaseHas('fl_flows', [
             'name' => 'Tasks Flow Edit',
             'description' => 'This is the tasks flow Edit'
         ]);
@@ -173,7 +173,7 @@ class FlowsTests extends TestCase{
             'name' => 'Step Flow 1 edit',
             'description' => 'This is a Step in the flow 1 edit'
         ]);
-        $this->seeInDatabase('fl_flows_steps', [
+        $this->assertDatabaseHas('fl_flows_steps', [
             'name' => 'Step Flow 1 edit',
             'description' => 'This is a Step in the flow 1 edit'
         ]);
@@ -191,7 +191,7 @@ class FlowsTests extends TestCase{
         $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteFlowCommand', [
             'flow' => $flow,
         ]);
-        $this->missingFromDatabase('fl_flows', [
+        $this->assertDatabaseMissing('fl_flows', [
             'name' => 'Tasks Flow',
             'description' => 'This is the tasks flow'
         ]);
@@ -210,7 +210,7 @@ class FlowsTests extends TestCase{
         $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteStepCommand', [
             'step' => $steps[0],
         ]);
-        $this->missingFromDatabase('fl_flows_steps', [
+        $this->assertDatabaseMissing('fl_flows_steps', [
             'name' => 'Step Flow 1',
             'description' => 'This is a Step in the flow 1'
         ]);
@@ -231,7 +231,7 @@ class FlowsTests extends TestCase{
             'from' => $steps[0],
             'to' => $steps[1]
         ], []);
-        $this->seeInDatabase('fl_flows_steps_transitions', [
+        $this->assertDatabaseHas('fl_flows_steps_transitions', [
             'flow_id' => $flow->id,
             'step_from_id' => $steps[0]->id,
             'step_to_id' => $steps[1]->id
@@ -241,7 +241,7 @@ class FlowsTests extends TestCase{
         $bus->dispatch('Hechoenlaravel\JarvisFoundation\Flows\DeleteTransitionCommand', [
             'transition' => $transition
         ], []);
-        $this->missingFromDatabase('fl_flows_steps_transitions', [
+        $this->assertDatabaseMissing('fl_flows_steps_transitions', [
             'flow_id' => $flow->id,
             'step_from_id' => $steps[0]->id,
             'step_to_id' => $steps[1]->id

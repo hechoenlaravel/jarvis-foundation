@@ -4,8 +4,12 @@ namespace Hechoenlaravel\JarvisFoundation\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Hechoenlaravel\JarvisFoundation\Auth\AppAuthenticationProvider;
+use Spatie\Menu\Laravel\Menu;
 
+/**
+ * Class JarvisFoundationServiceProvider
+ * @package Hechoenlaravel\JarvisFoundation\Providers
+ */
 class JarvisFoundationServiceProvider extends ServiceProvider
 {
 
@@ -14,37 +18,32 @@ class JarvisFoundationServiceProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
-        \Joselfonseca\LaravelApiTools\LaravelApiToolsServiceProvider::class,
-        \Pingpong\Generators\GeneratorsServiceProvider::class,
         \Hechoenlaravel\JarvisPlatformUi\Providers\JarvisPlatformUiServiceProvider::class,
         \Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\FieldsServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
         \Styde\Html\HtmlServiceProvider::class,
-        \Pingpong\Menus\MenusServiceProvider::class,
-        \Hechoenlaravel\JarvisFoundation\Providers\MenuServiceProvider::class,
-        \Pingpong\Widget\WidgetServiceProvider::class,
-        \Pingpong\Modules\ModulesServiceProvider::class,
-        \Barryvdh\Debugbar\ServiceProvider::class,
-        \Baum\Providers\BaumServiceProvider::class,
+        \Nwidart\Modules\LaravelModulesServiceProvider::class,
         \Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         \UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        \yajra\Datatables\DatatablesServiceProvider::class,
-        \Joselfonseca\ImageManager\ImageManagerServiceProvider::class,
+        \Yajra\Datatables\DatatablesServiceProvider::class,
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
-        \Prettus\Repository\Providers\RepositoryServiceProvider::class,
-
+        \Joselfonseca\LaravelApiTools\Providers\LaravelApiToolsServiceProvider::class,
+        \Spatie\Permission\PermissionServiceProvider::class,
+        \Intervention\Image\ImageServiceProvider::class,
+        \Spatie\Menu\Laravel\MenuServiceProvider::class,
+        \Yajra\Datatables\HtmlServiceProvider::class,
     ];
 
+    /**
+     * @var array
+     */
     protected $aliases = [
-        'MenuPing' => \Pingpong\Menus\MenuFacade::class,
-        'Module' => \Pingpong\Modules\Facades\Module::class,
-        'Widget' => \Pingpong\Widget\WidgetFacade::class,
-        'Debugbar' => \Barryvdh\Debugbar\Facade::class,
+        'Module' => \Nwidart\Modules\Facades\Module::class,
         'Uuid' => \Webpatser\Uuid\Uuid::class,
         'SweetAlert' => \UxWeb\SweetAlert\SweetAlert::class,
-        'Datatables' => \yajra\Datatables\Datatables::class,
+        'Datatables' => \Yajra\Datatables\Datatables::class,
         'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
     ];
 
@@ -58,9 +57,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../resources/assets' => public_path('vendor/jplatform'),
         ], 'public');
-        app('Dingo\Api\Auth\Auth')->extend('inSession', function ($app) {
-            return app('jarvis.auth.provider');
-        });
+        $this->registerMenus();
     }
 
     /**
@@ -72,7 +69,6 @@ class JarvisFoundationServiceProvider extends ServiceProvider
     {
         $this->registerOtherProviders()->registerAliases();
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'jarvisPlatform');
-        $this->app->bind('jarvis.auth.provider', AppAuthenticationProvider::class);
         $this->loadRoutes();
     }
 
@@ -106,6 +102,17 @@ class JarvisFoundationServiceProvider extends ServiceProvider
     protected function loadRoutes()
     {
         require_once __DIR__.'/../Http/routes.php';
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function registerMenus()
+    {
+        $this->app->singleton('menu.sidebar', function() {
+            return app(Menu::class)->addClass('sidebar-menu');
+        });
         return $this;
     }
 }

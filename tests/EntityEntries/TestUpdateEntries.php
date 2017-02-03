@@ -49,7 +49,7 @@ class TestUpdateEntries extends TestEntriesCommands{
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\FilterFieldFromInput',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
-        $this->seeInDatabase($preparedData['entity']->getTableName(), [
+        $this->assertDatabaseHas($preparedData['entity']->getTableName(), [
             'id' => $preparedData['entry_id'],
             'first_name' => 'fabien',
             'last_name' => 'symfony'

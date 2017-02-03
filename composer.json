@@ -17,29 +17,27 @@
     "require": {
         "php": ">=5.5.9",
         "hechoenlaravel/jarvis-ui" : "1.0.*",
-        "pingpong/sky": "~2.1",
-        "pingpong/modules": "~2.1",
-        "pingpong/menus": "~2.1",
-        "pingpong/widget" : "~2.1",
-        "barryvdh/laravel-debugbar": "^2.1@dev",
-        "styde/html": "~1.0",
-        "joselfonseca/laravel-api-tools": "1.4.*",
-        "joselfonseca/laravel-tactician" : "0.2.*",
-        "joselfonseca/image-manager" : "2.1.*",
-        "laracasts/utilities": "~2.0",
-        "uxweb/sweet-alert": "~1.1",
-        "yajra/laravel-datatables-oracle": "~5.0",
-        "baum/baum": "~1.1",
-        "cviebrock/eloquent-sluggable" : "3.1.*",
-        "maatwebsite/excel": "~2.0",
+        "nwidart/laravel-modules": "1.16.*",
+        "barryvdh/laravel-debugbar": "^2.3",
+        "styde/html": "~1.3",
+        "joselfonseca/laravel-api-tools": "2.1.*",
+        "joselfonseca/laravel-tactician" : "0.3.*",
+        "laracasts/utilities": "~2.1",
+        "uxweb/sweet-alert": "~1.4",
+        "yajra/laravel-datatables-oracle": "~7.0",
+        "maatwebsite/excel": "~2.1",
         "venturecraft/revisionable": "1.*",
         "webpatser/laravel-uuid": "2.*",
-        "prettus/l5-repository": "^2.1",
-        "prettus/laravel-validation": "1.1.*"
+        "doctrine/dbal": "2.5.*",
+        "predis/predis": "^1.1",
+        "spatie/laravel-permission": "^1.7",
+        "intervention/image": "^2.3",
+        "spatie/laravel-menu": "^2.1",
+        "yajra/laravel-datatables-html": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.*",
-        "orchestra/testbench": "3.1.*",
+        "phpunit/phpunit": "5.7",
+        "orchestra/testbench": "3.4.*",
         "mockery/mockery": "0.9.*"
     },
     "autoload": {
@@ -52,8 +50,6 @@
         "Hechoenlaravel\\JarvisFoundation\\Tests\\": "tests/"
       }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "config": {
       "preferred-install": "dist"
     }

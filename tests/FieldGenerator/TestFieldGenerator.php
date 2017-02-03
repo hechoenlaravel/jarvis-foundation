@@ -125,7 +125,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
     }
 
     public function test_it_creates_the_field_in_table()
@@ -151,7 +151,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertTrue(\Schema::hasColumn($entity->getTableName(), 'first_name'));
     }
 
@@ -178,7 +178,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\CallPreAssignEventOnField',
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name']);
         $this->assertFalse(\Schema::hasColumn($entity->getTableName(), 'first_name'));
     }
 
@@ -270,7 +270,7 @@ class TestFieldGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\FieldGenerator\Middleware\FieldOptionsSerializer',
         ]);
         $this->assertEquals(1, $field->order);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
     }
 
     public function test_it_edits_a_field()
@@ -343,8 +343,8 @@ class TestFieldGenerator extends TestCase
         ], [
 
         ]);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'last_name', 'order' => 1]);
-        $this->seeInDatabase('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'last_name', 'order' => 1]);
+        $this->assertDatabaseHas('app_entities_fields', ['entity_id' => $entity->id, 'slug' => 'first_name', 'order' => 2]);
     }
 
 }

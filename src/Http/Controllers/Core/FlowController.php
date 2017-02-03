@@ -3,9 +3,7 @@
 namespace Hechoenlaravel\JarvisFoundation\Http\Controllers\Core;
 
 use Hechoenlaravel\JarvisFoundation\Flows\Flow;
-use Illuminate\Http\Request;
 use Hechoenlaravel\JarvisFoundation\Http\Requests;
-use Joselfonseca\LaravelApiTools\Traits\ResponderTrait;
 use Hechoenlaravel\JarvisFoundation\Traits\FlowManager;
 use Hechoenlaravel\JarvisFoundation\Http\Controllers\Controller;
 use Hechoenlaravel\JarvisFoundation\Flows\Transformers\FlowTransformer;
@@ -16,7 +14,7 @@ use Hechoenlaravel\JarvisFoundation\Flows\Transformers\FlowTransformer;
  */
 class FlowController extends Controller
 {
-    use ResponderTrait, FlowManager;
+    use FlowManager;
 
 
     /**
@@ -26,7 +24,8 @@ class FlowController extends Controller
     public function store(Requests\FlowRequest $request)
     {
         $flow = $this->createFlow($request->all());
-        return $this->responseWithItem($flow, new FlowTransformer());
+        $response = fractal()->item($flow, new FlowTransformer)->toArray();
+        return response()->json($response);
     }
 
     /**
@@ -37,7 +36,8 @@ class FlowController extends Controller
     public function update(Requests\FlowRequest $request, $id)
     {
         $flow = $this->updateFlow(Flow::findOrFail($id), $request->all());
-        return $this->responseWithItem($flow, new FlowTransformer());
+        $response = fractal()->item($flow, new FlowTransformer)->toArray();
+        return response()->json($response);
     }
 
     /**
@@ -47,6 +47,6 @@ class FlowController extends Controller
     public function destroy($id)
     {
         $this->deleteFlow(Flow::findOrFail($id));
-        return $this->responseNoContent();
+        return response()->json(null, 204);
     }
 }

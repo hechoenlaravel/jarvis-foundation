@@ -101,7 +101,7 @@ class TestEntityGenerator extends TestCase
             'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
             'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
         ]);
-        $this->seeInDatabase('app_entities', ['slug' => 'entity_name_2']);
+        $this->assertDatabaseHas('app_entities', ['slug' => 'entity_name_2']);
         $this->assertFalse(\Schema::hasTable('jarvis_entity_name_2'));
     }
 

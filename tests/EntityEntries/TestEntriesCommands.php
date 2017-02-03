@@ -128,7 +128,7 @@ class TestEntriesCommands extends TestCase{
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\FilterFieldFromInput',
             'Hechoenlaravel\JarvisFoundation\Entries\Middleware\RunPreSaveEvent'
         ]);
-        $this->seeInDatabase($entity->getTableName(), [
+        $this->assertDatabaseHas($entity->getTableName(), [
             'first_name' => 'jose luis',
             'last_name' => 'fonseca'
         ]);
