@@ -2,9 +2,11 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Providers;
 
+use Spatie\Menu\Laravel\Html;
+use Spatie\Menu\Laravel\Menu;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Spatie\Menu\Laravel\Menu;
 
 /**
  * Class JarvisFoundationServiceProvider
@@ -30,9 +32,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \Hechoenlaravel\JarvisFoundation\Providers\ViewComposersServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
         \Joselfonseca\LaravelApiTools\Providers\LaravelApiToolsServiceProvider::class,
-        \Spatie\Permission\PermissionServiceProvider::class,
         \Intervention\Image\ImageServiceProvider::class,
-        \Spatie\Menu\Laravel\MenuServiceProvider::class,
         \Yajra\Datatables\HtmlServiceProvider::class,
     ];
 
@@ -110,9 +110,8 @@ class JarvisFoundationServiceProvider extends ServiceProvider
      */
     protected function registerMenus()
     {
-        $this->app->singleton('menu.sidebar', function() {
+        $this->app->singleton('menu.sidebar', function(){
             return app(Menu::class)->addClass('sidebar-menu');
         });
-        return $this;
     }
 }
