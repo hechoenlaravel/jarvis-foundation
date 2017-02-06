@@ -2,9 +2,9 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Requests;
 
-use Joselfonseca\LaravelApiTools\Http\Requests\ApiRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class StepRequest extends ApiRequest
+class StepRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

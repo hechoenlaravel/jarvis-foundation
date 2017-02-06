@@ -2,14 +2,14 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Http\Requests;
 
-use Joselfonseca\LaravelApiTools\Http\Requests\ApiRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Edit a Field Request
  * Class EditFieldRequest
  * @package Hechoenlaravel\JarvisFoundation\Http\Requests
  */
-class EditFieldRequest extends ApiRequest
+class EditFieldRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -46,7 +46,7 @@ class FieldsController extends Controller
     public function index($id)
     {
         $model = $this->model->byEntity($id)->orderBy('order', 'ASC');
-        return response()->json(fractal()->collection($model, new FieldTransformer())->toArray());
+        return response()->json(fractal()->collection($model->get(), new FieldTransformer())->toArray());
     }
 
     /**
@@ -60,7 +60,7 @@ class FieldsController extends Controller
         $data['entity_id'] = $id;
         $field = $this->generateField($data);
         $response = fractal()->item($field, new FieldTransformer())
-            ->addMeta('return_url', $data['returnUrl'])
+            ->addMeta(['return_url' => $data['returnUrl']])
             ->toArray();
         return response()->json($response);
     }
@@ -88,7 +88,7 @@ class FieldsController extends Controller
         $data['id'] = $fields;
         $field = $this->editField($data);
         $response = fractal()->item($field, new FieldTransformer())
-            ->addMeta('return_url', $data['returnUrl'])
+            ->addMeta(['return_url' => $data['returnUrl']])
             ->toArray();
         return response()->json($response);
     }

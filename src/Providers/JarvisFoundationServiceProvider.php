@@ -2,6 +2,7 @@
 
 namespace Hechoenlaravel\JarvisFoundation\Providers;
 
+use Hechoenlaravel\JarvisFoundation\Menu\MenuService;
 use Spatie\Menu\Laravel\Html;
 use Spatie\Menu\Laravel\Menu;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \Hechoenlaravel\JarvisFoundation\Providers\EventServiceProvider::class,
         \Styde\Html\HtmlServiceProvider::class,
         \Nwidart\Modules\LaravelModulesServiceProvider::class,
+        \Spatie\Permission\PermissionServiceProvider::class,
         \Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         \UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         \Yajra\Datatables\DatatablesServiceProvider::class,
@@ -34,6 +36,9 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         \Joselfonseca\LaravelApiTools\Providers\LaravelApiToolsServiceProvider::class,
         \Intervention\Image\ImageServiceProvider::class,
         \Yajra\Datatables\HtmlServiceProvider::class,
+        \Spatie\Backup\BackupServiceProvider::class,
+        \Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        \Hechoenlaravel\JarvisMenus\MenusServiceProvider::class
     ];
 
     /**
@@ -45,6 +50,7 @@ class JarvisFoundationServiceProvider extends ServiceProvider
         'SweetAlert' => \UxWeb\SweetAlert\SweetAlert::class,
         'Datatables' => \Yajra\Datatables\Datatables::class,
         'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+        'Sentry' => \Sentry\SentryLaravel\SentryFacade::class,
     ];
 
     /**
@@ -110,8 +116,13 @@ class JarvisFoundationServiceProvider extends ServiceProvider
      */
     protected function registerMenus()
     {
-        $this->app->singleton('menu.sidebar', function(){
-            return app(Menu::class)->addClass('sidebar-menu');
-        });
+        if(!app('menu')->instance('sidebar')) {
+            app('menu')->create('sidebar', function ($menu) {
+                $menu->enableOrdering();
+            });
+            $this->app->singleton('menu.service', function(){
+                return new MenuService();
+            });
+        }
     }
 }
