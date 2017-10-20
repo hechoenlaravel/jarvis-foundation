@@ -8,12 +8,6 @@
             "email": "jose@ditecnologia.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/hechoenlaravel/composer-plugin"
-        }
-    ],
     "require": {
         "php": ">=7.1",
         "laravel/framework": "5.4.*",
