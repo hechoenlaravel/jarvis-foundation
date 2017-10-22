@@ -35,7 +35,7 @@ class EntityModel extends Model
      */
     public function getTableName()
     {
-        return $this->prefix.'_'.$this->slug;
+        return $this->table_name;
     }
 
     public function fields()

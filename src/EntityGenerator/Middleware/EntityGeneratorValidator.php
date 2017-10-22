@@ -22,7 +22,6 @@ class EntityGeneratorValidator implements Middleware
      * @var array
      */
     public $rules = [
-        'namespace' => 'required',
         'name' => 'required',
         'description' => 'required',
         'slug' => 'required',

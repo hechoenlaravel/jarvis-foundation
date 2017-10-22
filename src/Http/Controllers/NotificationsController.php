@@ -44,6 +44,6 @@ class NotificationsController extends Controller
         if (!empty($notification->link)) {
             return redirect()->to($notification->link);
         }
-        return redirect()->route('notifications');
+        return redirect()->route('notifications.index');
     }
 }

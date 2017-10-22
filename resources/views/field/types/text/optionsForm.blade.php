@@ -8,6 +8,6 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        {!! Field::select('transform', ['1' => 'Mayusculas', '2' => 'Minusculas'], ['label' => 'Formato', 'class' => 'select2', 'ng-model' => 'form.required']) !!}
+        {!! Field::select('transform', ['1' => 'Todo Mayusculas', '2' => 'Todo Minusculas', '3' => 'Capitalizado'], ['label' => 'Formato', 'class' => 'select2', 'ng-model' => 'form.options[0].transform']) !!}
     </div>
 </div>

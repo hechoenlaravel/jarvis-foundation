@@ -32,7 +32,10 @@ class SetPrefixAndTableName implements Middleware
      */
     protected function setPrefix($command)
     {
-        if (empty($command->prefix)) {
+        if (empty($command->prefix) && empty($command->namespace)) {
+            return null;
+        }
+        if (empty($command->prefix) && !empty($command->namespace)) {
             return $command->namespace;
         }
         return $command->prefix;
@@ -46,6 +49,12 @@ class SetPrefixAndTableName implements Middleware
      */
     protected function getTableName($command)
     {
+        if(!empty($command->table_name)) {
+            return $command->table_name;
+        }
+        if(empty($command->prefix)) {
+            return $command->slug;
+        }
         return $command->prefix.'_'.$command->slug;
     }
 }

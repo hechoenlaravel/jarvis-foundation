@@ -21,7 +21,7 @@ class TestEntityGenerator extends TestCase
     }
 
     /**
-     * @expectedException     Hechoenlaravel\JarvisFoundation\Exceptions\CommandValidationException
+     * @expectedException \Hechoenlaravel\JarvisFoundation\Exceptions\CommandValidationException
      */
     public function test_it_validates_the_command()
     {
@@ -103,6 +103,29 @@ class TestEntityGenerator extends TestCase
         ]);
         $this->assertDatabaseHas('app_entities', ['slug' => 'entity_name_2']);
         $this->assertFalse(\Schema::hasTable('jarvis_entity_name_2'));
+    }
+
+    public function test_it_creates_the_table_in_the_db_with_table_name_defined()
+    {
+        $this->migrateDatabase();
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+
+        $bus->addHandler('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Handler\EntityGeneratorHandler');
+
+        $bus->dispatch('Hechoenlaravel\JarvisFoundation\EntityGenerator\EntityGeneratorCommand', [
+            'namespace' => 'jarvis',
+            'name' => 'entity name',
+            'description' => 'Entity Description',
+            'slug' => 'entity_name',
+            'locked' => 1,
+            'table_name' => 'entity_name'
+        ], [
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\EntityGeneratorValidator',
+            'Hechoenlaravel\JarvisFoundation\EntityGenerator\Middleware\SetPrefixAndTableName'
+        ]);
+
+        $this->assertTrue(\Schema::hasTable('entity_name'));
     }
 
 }

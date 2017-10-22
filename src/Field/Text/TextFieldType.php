@@ -113,7 +113,7 @@ class TextFieldType implements FieldTypeInterface
      */
     public function preSaveEvent($value)
     {
-        return strtolower($value);
+        return mb_strtolower($value);
     }
 
     /**
@@ -122,8 +122,10 @@ class TextFieldType implements FieldTypeInterface
     public function presentFront()
     {
         $options = unserialize($this->fieldOptions);
-        if(isset($options['transform'])){
-            return $this->transformText($options['transform']);
+        foreach($options as $option) {
+            if(array_key_exists('transform', $option)) {
+                return $this->transformText($option['transform']);
+            }
         }
         return strtoupper($this->value);
     }
@@ -136,9 +138,11 @@ class TextFieldType implements FieldTypeInterface
     {
         switch ($transformation){
             case "1":
-                return strtoupper($this->value);
+                return mb_strtoupper($this->value);
             case "2":
-                return strtolower($this->value);
+                return mb_strtolower($this->value);
+            case "3":
+                return ucwords($this->value);
             default:
                 return $this->value;
         }
