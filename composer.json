@@ -10,7 +10,6 @@
     ],
     "require": {
         "php": ">=7.1",
-        "barryvdh/laravel-debugbar": "^2.3",
         "doctrine/dbal": "2.5.*",
         "hechoenlaravel/jarvis-ui": "2.0.*",
         "hechoenlaravel/jarvis-menus": "2.4.*",
