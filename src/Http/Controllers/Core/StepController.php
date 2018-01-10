@@ -28,7 +28,7 @@ class StepController extends Controller
         if ($request->has('flow_id')) {
             $step->where('flow_id', $request->get('flow_id'));
         }
-        $response = fractal()->collection($step, new StepTransformer())->toArray();
+        $response = fractal()->collection($step->get(), new StepTransformer())->toArray();
         return response()->json($response);
     }
 
